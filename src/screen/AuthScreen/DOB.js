@@ -4,6 +4,7 @@ import {LinearGradient} from 'expo-linear-gradient'
 import {useFonts} from 'expo-font'
 import HText from '../../components/common/HText';
 import RootComponent from '../RootComponent';
+import { Ionicons } from '@expo/vector-icons';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
@@ -19,8 +20,7 @@ function DOB({navigation}) {
 
     return (
       
-               <View style={StyleSheet.absoluteFill}>
-                   
+               <View style={[StyleSheet.absoluteFill]}>
                </View>
 
 

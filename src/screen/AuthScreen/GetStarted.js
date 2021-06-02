@@ -38,8 +38,8 @@ function GetStarted({navigation}) {
                                             
                     </View>
 
-                    <View style={{alignItems:'center'}}>
-                        <View style={{alignItems:'center', width:92, backgroundColor:'#950740', height:50, justifyContent:'center', borderRadius:20}}>
+                    <View style={{alignItems:'center',}}>
+                        <View style={{alignItems:'center', width:100, backgroundColor:'#950740', height:50, justifyContent:'center', borderRadius:20}}>
                            <TouchableOpacity
                            onPress={()=>navigation.navigate('DOB')}>
                            <Image
