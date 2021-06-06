@@ -9,13 +9,6 @@ const HEIGHT = Dimensions.get('window').height;
 
 function GetStarted({navigation}) {
 
-    // const [loaded] = useFonts({
-    //     Humanist777CondensedBT: require('../../../assets/fonts/humnst777_cn_bt/Humanist777CondensedBT.ttf'),
-    //   });
-      
-    //   if (!loaded) {
-    //     return null;
-    //   }
 
     return (
       
@@ -41,7 +34,7 @@ function GetStarted({navigation}) {
                     <View style={{alignItems:'center',}}>
                         <View style={{alignItems:'center', width:100, backgroundColor:'#950740', height:50, justifyContent:'center', borderRadius:20}}>
                            <TouchableOpacity
-                           onPress={()=>navigation.navigate('DOB')}>
+                           onPress={()=>navigation.navigate('SignUpOne')}>
                            <Image
                             source={require('../../../assets/icons/rightArrow.png')}
                                 style={{width: 40, height:31}}
