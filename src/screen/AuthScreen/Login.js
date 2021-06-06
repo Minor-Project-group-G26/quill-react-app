@@ -45,7 +45,7 @@ function Login({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}>Forget Password ?</RText>
                 </View>
                 <View style={{marginTop:16}}>
-                    <ArrowButton onPress={()=>navigation.navigate('DOB')}/>
+                    <ArrowButton onPress={()=>console.log("Clicked")}/>
                 </View>
             </View>
 
@@ -59,4 +59,4 @@ function Login({navigation, route}) {
     )
 }
 
-export default RootComponent(Login) //(component, background(bool))
+export default RootComponent(Login,false) //(component, background(bool))
