@@ -45,7 +45,7 @@ function SignUpTwo({navigation, route}) {
     
     }]
 
-    console.log(route.params)
+    // console.log(route.params)
 
     return (
         <View style={{ flex: 1 }}>
@@ -59,7 +59,7 @@ function SignUpTwo({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpThree',{data:{...route.params.data,  User}})} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpThree',{data:{...route.params.data,  ...User}})} />
                 </View>
             </View>
 

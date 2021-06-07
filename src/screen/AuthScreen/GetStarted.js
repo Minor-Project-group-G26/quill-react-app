@@ -9,13 +9,7 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function GetStarted({navigation}) {
-    const GetData = async()=>{
-        axios.get('http://192.168.0.6:5000')
-        .then(res => res.data)
-        .then(res=>{
-            console.log(res)
-        }) 
-    }
+    
 
     return (
       

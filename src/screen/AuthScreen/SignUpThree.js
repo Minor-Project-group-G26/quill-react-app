@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Dimensions, Image, Text, TextInput, View } from 'react-native'
+import { useDispatch } from 'react-redux';
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
 
 import RText from '../../components/common/RText';
+import { SignupUser } from '../../feature/AuthSlice';
 
 import RootComponent from '../RootComponent'
 
@@ -39,12 +41,27 @@ function SignUpThree({navigation, route}) {
         // input_type: 'email-address', 
         // label_Style:,
         // textInput_Style:{},
+        secureTextEntry:true,
+
         textInput_Placeholder:"Type Confirm Password...",
         placeholder_Color:'#ededed',
         onChangeText: (e="")=>setUser({...User, cpassword:e}),
         value:User.cpassword
     
     }]
+
+    const dispatch = useDispatch();
+
+    const SignUpHandler = ()=>{
+        if(User.password !== User.cpassword)
+        return console.log("password not matched")
+        let data = {
+            ...route.params.data,
+            ...User
+        }
+        console.log(data);
+        dispatch(SignupUser(data));
+    }
 
 
     return (
@@ -59,7 +76,7 @@ function SignUpThree({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('Login')} />
+                    <ArrowButton onPress={SignUpHandler} />
                 </View>
             </View>
 

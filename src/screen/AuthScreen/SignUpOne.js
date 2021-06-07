@@ -19,7 +19,7 @@ function SignUpOne({navigation, route}) {
 
     const [User, setUser] = useState({
         name:"",
-        dob:""
+        date_of_birth:"" //yyyy-mm-dd
     })
 
 
@@ -41,8 +41,8 @@ function SignUpOne({navigation, route}) {
         // textInput_Style:{},
         textInput_Placeholder:"yyyy-mm-dd",
         placeholder_Color:'#ededed',
-        onChangeText: (e="")=>setUser({...User, dob:e.trim()}),
-        value:User.dob
+        onChangeText: (e="")=>setUser({...User, date_of_birth:e.trim()}),
+        value:User.date_of_birth
 
 
     }]
