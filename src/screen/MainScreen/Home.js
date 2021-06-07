@@ -1,13 +1,14 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View ,Button} from 'react-native'
 
-function Home() {
+function Home(props) {
     return (
         <View>
             <Text>This is Home</Text>
-            {/* <Button 
+            <Button 
             title= "Home"
-            /> */}
+            onPress={()=>props.navigation.navigate('Books')}
+            />
         </View>
     )
 }
