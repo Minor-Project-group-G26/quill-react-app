@@ -20,6 +20,8 @@ function AuthForm({List}) {
                         style={{ color: '#000', fontSize: 16, paddingHorizontal:8 }}
                         keyboardType={item.input_type? item.input_type: 'default'}
                         secureTextEntry={item.secureTextEntry?item.secureTextEntry:false}
+                        onChangeText={item.onChangeText}
+                        value={item.value}
                     />
                 </View>
             </View>

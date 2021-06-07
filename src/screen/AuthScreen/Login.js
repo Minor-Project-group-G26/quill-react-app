@@ -45,7 +45,7 @@ function Login({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}>Forget Password ?</RText>
                 </View>
                 <View style={{marginTop:16}}>
-                    <ArrowButton onPress={()=>navigation.navigate('DOB')}/>
+                    <ArrowButton onPress={()=>console.log('DOB')}/>
                 </View>
             </View>
 

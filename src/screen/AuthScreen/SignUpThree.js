@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Dimensions, Image, Text, TextInput, View } from 'react-native'
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
@@ -12,29 +12,41 @@ const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
 
-const Form = [{
-    label: 'Password',
-    // input_type: 'email-address', 
-    // label_Style:{},
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Password...",
-    placeholder_Color:'#ededed',
-    secureTextEntry:true,
 
-
-},{
-    label: 'Confirm Password',
-    // input_type: 'email-address', 
-    // label_Style:,
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Confirm Password...",
-    placeholder_Color:'#ededed'
-
-}]
 
 
 
 function SignUpThree({navigation, route}) {
+    const [User, setUser] = useState({
+        password:"",
+        cpassword:""
+    })
+
+
+    const Form = [{
+        label: 'Password',
+        // input_type: 'email-address', 
+        // label_Style:{},
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Password...",
+        placeholder_Color:'#ededed',
+        secureTextEntry:true,
+        onChangeText: (e="")=>setUser({...User, password:e}),
+        value:User.password
+    
+    },{
+        label: 'Confirm Password',
+        // input_type: 'email-address', 
+        // label_Style:,
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Confirm Password...",
+        placeholder_Color:'#ededed',
+        onChangeText: (e="")=>setUser({...User, cpassword:e}),
+        value:User.cpassword
+    
+    }]
+
+
     return (
         <View style={{ flex: 1 }}>
             {/* form */}
