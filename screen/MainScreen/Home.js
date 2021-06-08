@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Button, Text, View } from 'react-native'
-import { store } from '../../store/store';
+import { store } from '../../store';
 import { request } from '../../utils/request'
 
 function Home() {

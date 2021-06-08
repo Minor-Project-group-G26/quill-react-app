@@ -17,7 +17,7 @@ function GetStarted({navigation}) {
                     <View style={{height: HEIGHT*0.7, alignItems:'center', marginTop: HEIGHT*0.08}}>
                         <View>
                             <Image
-                                source={require('../../../assets/images/Logo.png')}
+                                source={require('../../assets/images/Logo.png')}
                                 style={{width:170, height:176}}
                             />
                         </View>
@@ -38,7 +38,7 @@ function GetStarted({navigation}) {
                         //    onPress={GetData}>
                             onPress={()=>navigation.navigate('SignUpOne')}> 
                            <Image
-                            source={require('../../../assets/icons/rightArrow.png')}
+                            source={require('../../assets/icons/rightArrow.png')}
                                 style={{width: 40, height:31}}
                             />
                            </TouchableOpacity>

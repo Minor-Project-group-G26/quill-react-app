@@ -7,7 +7,7 @@ import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
 
 import RText from '../../components/common/RText';
-import { loginUser } from '../../feature/AuthSlice';
+import { loginUser } from '../../store/AuthSlice';
 import { request } from '../../utils/request';
 
 import RootComponent from '../RootComponent'

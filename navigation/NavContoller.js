@@ -8,15 +8,14 @@ function NavContoller() {
     const token = useSelector(state => state.auth.token);
     // const token = null;
     console.log(token)
-    return (
-        <NavigationContainer>
+    return (<>
             {token === null
             ?(
                 <AuthStack />                
             ):(
                 <MainStack /> 
             )}
-        </NavigationContainer>
+        </>
     )
 }
 

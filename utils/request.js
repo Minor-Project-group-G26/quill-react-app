@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useSelector } from "react-redux";
-import { store } from "../store/store";
+import { store } from "../store";
 
 export const request = async(method='get', url, data=null)=>{
     const token = store.getState().auth

@@ -7,7 +7,7 @@ function ArrowButton({onPress=null}) {
             <TouchableOpacity
             onPress={onPress}>
             <Image
-            source={require('../../../../assets/icons/rightArrow.png')}
+            source={require('../../../assets/icons/rightArrow.png')}
                 style={{width: 40, height:31}}
             />
             </TouchableOpacity>
