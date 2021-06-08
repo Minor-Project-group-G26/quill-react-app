@@ -4,11 +4,12 @@ import {LinearGradient} from 'expo-linear-gradient'
 import {useFonts} from 'expo-font'
 import HText from '../../components/common/HText';
 import RootComponent from '../RootComponent';
+import axios from 'axios';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function GetStarted({navigation}) {
-
+    
 
     return (
       
@@ -34,7 +35,8 @@ function GetStarted({navigation}) {
                     <View style={{alignItems:'center',}}>
                         <View style={{alignItems:'center', width:100, backgroundColor:'#950740', height:50, justifyContent:'center', borderRadius:20}}>
                            <TouchableOpacity
-                           onPress={()=>navigation.navigate('SignUpOne')}>
+                        //    onPress={GetData}>
+                            onPress={()=>navigation.navigate('SignUpOne')}> 
                            <Image
                             source={require('../../../assets/icons/rightArrow.png')}
                                 style={{width: 40, height:31}}

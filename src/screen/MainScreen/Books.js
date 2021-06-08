@@ -52,7 +52,7 @@ function Books(props) {
                                         </View>
                                         <View style={styles.cardDetailView}>
                                             <View style={{flexDirection:'row'}}>
-                                                    <View style={{flexDirection:'row',marginHorizontal:13,left:-9}}>
+                                                    <View style={{flexDirection:'row',marginHorizontal:13,left:-12}}>
                                                         <Text >
                                                             {item.Rating}
                                                         </Text>
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
         width:'80%'
     },
     cardTitle:{
-        left:9,
+        left:0,
         fontSize:16},
     cardDetailView:{width:'100%',top:'37%', position:'absolute'},
 

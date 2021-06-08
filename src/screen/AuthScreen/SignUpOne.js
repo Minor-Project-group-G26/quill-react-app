@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Dimensions, Text, TextInput, View } from 'react-native'
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
@@ -12,27 +12,43 @@ const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
 
-const Form = [{
-    label: 'Name',
-    // input_type: 'email-address', 
-    // label_Style:{},
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Name...",
-    placeholder_Color:'#ededed'
-
-},{
-    label: 'Date Of Birth',
-    // input_type: 'email-address', 
-    // label_Style:,
-    // textInput_Style:{},
-    textInput_Placeholder:"Type DOB...",
-    placeholder_Color:'#ededed'
-
-}]
 
 
 
 function SignUpOne({navigation, route}) {
+
+    const [User, setUser] = useState({
+        name:"",
+        date_of_birth:"" //yyyy-mm-dd
+    })
+
+
+    
+    const Form = [{
+        label: 'Name',
+        // input_type: 'email-address', 
+        // label_Style:{},
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Name...",
+        placeholder_Color:'#ededed',
+        onChangeText: (e="")=>setUser({...User, name:e.trim()}),
+        value:User.name
+
+    },{
+        label: 'Date Of Birth',
+        // input_type: 'email-address', 
+        // label_Style:,
+        // textInput_Style:{},
+        textInput_Placeholder:"yyyy-mm-dd",
+        placeholder_Color:'#ededed',
+        onChangeText: (e="")=>setUser({...User, date_of_birth:e.trim()}),
+        value:User.date_of_birth
+
+
+    }]
+
+
+
     return (
         <View style={{ flex: 1 ,marginTop:83}}>
             {/* form */}
@@ -45,14 +61,14 @@ function SignUpOne({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo')} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo',{data:User})} />
                 </View>
             </View>
 
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
                 <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Don’t Have an Account</RText>
-                    <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }} onPress={()=>navigation.navigate('Login')}>Login</HText>
+                    <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }} onPress={()=>navigation.navigate('Login', {data:User})}>Login</HText>
                 </View>
             </View>
         </View>

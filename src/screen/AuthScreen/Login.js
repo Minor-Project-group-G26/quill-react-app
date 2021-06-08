@@ -1,38 +1,64 @@
 import { useHeaderHeight } from '@react-navigation/stack';
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Dimensions, Text, TextInput, View } from 'react-native'
+import { useDispatch } from 'react-redux';
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
 
 import RText from '../../components/common/RText';
+import { loginUser } from '../../feature/AuthSlice';
+import { request } from '../../utils/request';
 
 import RootComponent from '../RootComponent'
 
 const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
-const Form = [{
-    label: 'Email',
-    input_type: 'email-address', 
-    // label_Style:{},
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Email...",
-    placeholder_Color:'#ededed'
 
-},{
-    label: 'Password',
-    input_type: 'email-address', 
-    // label_Style:,
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Email...",
-    secureTextEntry:true,
-    placeholder_Color:'#ededed'
-
-}]
 
 
 function Login({navigation, route}) {
+
+    const dispatch = useDispatch();
+
+    const [User, setUser] = useState({
+        email: "",
+        password: ""
+    })
+    const Form = [{
+        label: 'Email',
+        input_type: 'email-address', 
+        // label_Style:{},
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Email...",
+        placeholder_Color:'#ededed',
+        onChangeText: (e) => setUser({
+            ...User,
+            email: e.trim()
+        }),
+        value: User.email
+    },{
+        label: 'Password',
+        // input_type: 'e', 
+        // label_Style:,
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Password...",
+        secureTextEntry:true,
+        placeholder_Color:'#ededed',
+        onChangeText: (e) => setUser({
+            ...User,
+            password: e.trim()
+        }),
+        value: User.password
+    
+    }]
+
+
+    const LoginHandler = ()=>{
+        dispatch(loginUser(User))
+    }
+
     return (
         <View style={{ flex: 1 }}>
             {/* form */}
@@ -45,7 +71,7 @@ function Login({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}>Forget Password ?</RText>
                 </View>
                 <View style={{marginTop:16}}>
-                    <ArrowButton onPress={()=>console.log("Clicked")}/>
+                    <ArrowButton onPress={LoginHandler}/>
                 </View>
             </View>
 

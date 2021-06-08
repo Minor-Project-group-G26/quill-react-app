@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Text, View ,Button} from 'react-native'
 
@@ -7,8 +8,8 @@ function Home(props) {
             <Text>This is Home</Text>
             <Button 
             title= "Home"
-            onPress={()=>props.navigation.navigate('Books')}
-            />
+           onPress={()=>props.navigation.navigate('Books')}
+    />
         </View>
     )
 }

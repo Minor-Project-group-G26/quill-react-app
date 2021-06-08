@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Dimensions, Image, Text, TextInput, View } from 'react-native'
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
@@ -12,27 +12,41 @@ const WIDTH = Dimensions.get('window').width
 const HEIGHT = Dimensions.get('window').height
 
 
-const Form = [{
-    label: 'Username',
-    // input_type: 'email-address', 
-    // label_Style:{},
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Username...",
-    placeholder_Color:'#ededed'
 
-},{
-    label: 'Date Of Birth',
-    input_type: 'email-address', 
-    // label_Style:,
-    // textInput_Style:{},
-    textInput_Placeholder:"Type Email...",
-    placeholder_Color:'#ededed'
-
-}]
 
 
 
 function SignUpTwo({navigation, route}) {
+    const [User, setUser] = useState({
+        username:"",
+        email:""
+    })
+
+
+    const Form = [{
+        label: 'Username',
+        // input_type: 'email-address', 
+        // label_Style:{},
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Username...",
+        placeholder_Color:'#ededed',
+        onChangeText: (e="")=>setUser({...User, username:e.trim()}),
+        value:User.username
+    
+    },{
+        label: 'Email',
+        input_type: 'email-address', 
+        // label_Style:,
+        // textInput_Style:{},
+        textInput_Placeholder:"Type Email...",
+        placeholder_Color:'#ededed',
+        onChangeText: (e="")=>setUser({...User, email:e.trim()}),
+        value:User.email
+    
+    }]
+
+    // console.log(route.params)
+
     return (
         <View style={{ flex: 1 }}>
             {/* form */}
@@ -45,7 +59,7 @@ function SignUpTwo({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpThree')} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpThree',{data:{...route.params.data,  ...User}})} />
                 </View>
             </View>
 
