@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react'
 import { Button, Text, View } from 'react-native'
+import { useDispatch } from 'react-redux';
 import { store } from '../../store';
+import { ClearToken } from '../../store/AuthSlice';
 import { request } from '../../utils/request'
 
 function Home() {
-    const get = () => {
-        const res = request('get', '');
-        console.log(res.data);
-        // console.log(store.getState().auth)
-    }
+    const dispatch = useDispatch()
     return (
         <View>
             <Text>This is Home</Text>
             <Button 
             title= "Home"
-            onPress={get}
+            onPress={()=>dispatch(ClearToken())}
             />
         </View>
     )
