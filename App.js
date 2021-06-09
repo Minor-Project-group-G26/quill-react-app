@@ -1,16 +1,24 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
-import NavContoller from './src/navigation/NavContoller';
-import { store } from './src/store/store';
-
+import { Provider, useSelector } from 'react-redux';
+import NavContoller from './navigation/NavContoller';
+import store from './store';
+import AuthStack from './navigation/AuthStack'
+import MainStack from './navigation/MainStack'
 export default function App() {
+  const token = store.getState().auth.token
+  const sample = store.getState().sample.sample
+  // const token = null;
+  console.log(token, sample)
   return (
     <Provider store={store}>
-      <NavContoller />
-    </Provider>
-  );
+      <NavigationContainer>
+         <NavContoller />
+      </NavigationContainer>
+      </Provider>
+  )
 }
 
 const styles = StyleSheet.create({

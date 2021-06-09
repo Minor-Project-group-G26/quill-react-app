@@ -6,7 +6,7 @@ import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
 
 import RText from '../../components/common/RText';
-import { SignupUser } from '../../feature/AuthSlice';
+import { SignupUser } from '../../store/AuthSlice';
 
 import RootComponent from '../RootComponent'
 
