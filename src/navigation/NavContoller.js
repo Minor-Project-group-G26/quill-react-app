@@ -6,8 +6,8 @@ import MainStack from './MainStack'
 function NavContoller() {
     return (
         <NavigationContainer>
-            <AuthStack />
-            {/* <MainStack /> */}
+            {/* <AuthStack /> */}
+            <MainStack />
         </NavigationContainer>
     )
 }
