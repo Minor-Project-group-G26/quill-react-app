@@ -27,6 +27,7 @@ function RText({style, children="", onPress=()=>{}}) {
         let styles = {
             fontSize:16,
             color: '#000',
+            fontFamily:'Roboto',
             // fontWeight:'bold',
             ...style,
         }

@@ -12,7 +12,6 @@ export const loginUser = createAsyncThunk(
             data: data
         })
         // console.log(response);
-        const saved = AsyncStorage.getItem('')
         return response.data;
     }
 )
@@ -33,7 +32,7 @@ export const CheckToken = createAsyncThunk(
     'auth/CheckToken',
     async()=>{
         token = await GetAsyncData('@token');
-        console.log(token);
+        // console.log(token);
         return JSON.parse(token)
     }
 )
@@ -42,7 +41,7 @@ export const ClearToken = createAsyncThunk(
     'auth/ClearToken',
     async()=>{
         token = await RemoveAsyncData('@token');
-        console.log(token);
+        // console.log(token);
         return (token)
     }
 )
@@ -70,7 +69,7 @@ const AuthSlice = createSlice({
             state.username = payload.username;
         },
         [SignupUser.fulfilled]:(state, {payload})=>{
-            console.log(payload);
+            // console.log(payload);
             const saved = SaveAsyncData('@token', payload);
             if(saved){
                 state.isSaved = true;
