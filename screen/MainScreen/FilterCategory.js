@@ -19,9 +19,11 @@ const Category = [
 function FilterCategory() {
 
     const [swapColor, setswapColor] = useState(-1)
+    const [dataIndex, setdataIndex] = useState(-1)
     
     const ChangeStyle = (index) => {
         setswapColor(index === swapColor ? null : index)
+        setdataIndex(index)
     }
 
     const CategoryTemplate = Category.map((item,index) => (
@@ -42,12 +44,12 @@ function FilterCategory() {
                 {CategoryTemplate}
                 <View style={{paddingVertical: 15}}></View>
             </View>
-            <View style={style.filterBox}>
+            <TouchableOpacity activeOpacity={1} style={style.filterBox}>
                 <View>
                     <Image style={style.filterIcon} source={require('../../assets/icons/cil_filter.png')} />
                 </View>
                 <HText style={style.filterText}>Filter</HText>
-            </View>
+            </TouchableOpacity>
         </View>
     )
 }

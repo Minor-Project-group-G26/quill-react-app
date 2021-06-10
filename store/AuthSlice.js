@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
         console.log(data)
         const response = await axios({
             method:'post',
-            url:'http://192.168.0.6:5000/auth/sign_in',
+            url:'http://192.168.43.216:5000/auth/sign_in',
             data: data
         })
         // console.log(response);
@@ -22,7 +22,7 @@ export const SignupUser = createAsyncThunk(
         console.log(data)
         const response = await axios({
             method:'post',
-            url:'http://192.168.0.6:5000/auth/sign_up',
+            url:'http://192.168.43.216:5000/auth/sign_up',
             data: data
         }).catch(err=> console.warn(err))
         // console.log(response);
