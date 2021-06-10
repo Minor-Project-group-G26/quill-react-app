@@ -45,7 +45,7 @@ function SignUpTwo({navigation, route}) {
     
     }]
 
-    console.log(route.params)
+    // console.log(route.params)
 
     return (
         <View style={{ flex: 1 }}>
@@ -59,7 +59,7 @@ function SignUpTwo({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpThree',{data:{...route.params.data,  User}})} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpThree',{data:{...route.params.data,  ...User}})} />
                 </View>
             </View>
 
@@ -69,15 +69,15 @@ function SignUpTwo({navigation, route}) {
                     {/* <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }}>Login</HText> */}
                     <View style={{flexDirection:'row', width:WIDTH*0.8, justifyContent:'space-around'}}>
                       <Image
-                        source={require('../../../assets/icons/social_google.png')}
+                        source={require('../../assets/icons/social_google.png')}
                         style={{width:41, height:41}}
                       />
                       <Image
-                        source={require('../../../assets/icons/social_facebook.png')}
+                        source={require('../../assets/icons/social_facebook.png')}
                         style={{width:41, height:41}}
                       />
                       <Image
-                        source={require('../../../assets/icons/social_twitter.png')}
+                        source={require('../../assets/icons/social_twitter.png')}
                         style={{width:41, height:41}}
                       />
                     </View>

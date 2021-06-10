@@ -5,8 +5,8 @@ import AppLoading from 'expo-app-loading'
 
 
 const fetchFont = ()=>Font.loadAsync({
-    'Humnst777': require('../../../../assets/fonts/humnst777_blk_bt/HUM777K.ttf'),
-    'Humnst777-Italic': require('../../../../assets/fonts/humnst777_blk_bt/HUM777KI.ttf'),
+    'Humnst777': require('../../../assets/fonts/humnst777_blk_bt/HUM777K.ttf'),
+    'Humnst777-Italic': require('../../../assets/fonts/humnst777_blk_bt/HUM777KI.ttf'),
 
     
     

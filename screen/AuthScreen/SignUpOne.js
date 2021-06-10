@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Dimensions, Image, Text, TextInput, View } from 'react-native'
+import { Button, Dimensions, Text, TextInput, View } from 'react-native'
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
@@ -15,40 +15,42 @@ const HEIGHT = Dimensions.get('window').height
 
 
 
+function SignUpOne({navigation, route}) {
 
-function SignUpThree({navigation, route}) {
     const [User, setUser] = useState({
-        password:"",
-        cpassword:""
+        name:"",
+        date_of_birth:"" //yyyy-mm-dd
     })
 
 
+    
     const Form = [{
-        label: 'Password',
+        label: 'Name',
         // input_type: 'email-address', 
         // label_Style:{},
         // textInput_Style:{},
-        textInput_Placeholder:"Type Password...",
+        textInput_Placeholder:"Type Name...",
         placeholder_Color:'#ededed',
-        secureTextEntry:true,
-        onChangeText: (e="")=>setUser({...User, password:e}),
-        value:User.password
-    
+        onChangeText: (e="")=>setUser({...User, name:e.trim()}),
+        value:User.name
+
     },{
-        label: 'Confirm Password',
+        label: 'Date Of Birth',
         // input_type: 'email-address', 
         // label_Style:,
         // textInput_Style:{},
-        textInput_Placeholder:"Type Confirm Password...",
+        textInput_Placeholder:"yyyy-mm-dd",
         placeholder_Color:'#ededed',
-        onChangeText: (e="")=>setUser({...User, cpassword:e}),
-        value:User.cpassword
-    
+        onChangeText: (e="")=>setUser({...User, date_of_birth:e.trim()}),
+        value:User.date_of_birth
+
+
     }]
 
 
+
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 ,marginTop:83}}>
             {/* form */}
             <View style={{ justifyContent: 'flex-end', alignItems: 'center', height: HEIGHT * 0.55 }}>
                 <AuthForm List={Form} />
@@ -59,19 +61,18 @@ function SignUpThree({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('Login')} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo',{data:User})} />
                 </View>
             </View>
 
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
                 <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
-                    {/* <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }}>Login</HText> */}
-                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Agree our Term & Condition</RText>
-                    
+                    <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Don’t Have an Account</RText>
+                    <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }} onPress={()=>navigation.navigate('Login', {data:User})}>Login</HText>
                 </View>
             </View>
         </View>
     )
 }
 
-export default RootComponent(SignUpThree)
+export default RootComponent(SignUpOne)

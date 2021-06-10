@@ -9,13 +9,7 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function GetStarted({navigation}) {
-    const GetData = async()=>{
-        axios.get('http://192.168.0.6:5000')
-        .then(res => res.data)
-        .then(res=>{
-            console.log(res)
-        }) 
-    }
+    
 
     return (
       
@@ -23,7 +17,7 @@ function GetStarted({navigation}) {
                     <View style={{height: HEIGHT*0.7, alignItems:'center', marginTop: HEIGHT*0.08}}>
                         <View>
                             <Image
-                                source={require('../../../assets/images/Logo.png')}
+                                source={require('../../assets/images/Logo.png')}
                                 style={{width:170, height:176}}
                             />
                         </View>
@@ -44,7 +38,7 @@ function GetStarted({navigation}) {
                         //    onPress={GetData}>
                             onPress={()=>navigation.navigate('SignUpOne')}> 
                            <Image
-                            source={require('../../../assets/icons/rightArrow.png')}
+                            source={require('../../assets/icons/rightArrow.png')}
                                 style={{width: 40, height:31}}
                             />
                            </TouchableOpacity>

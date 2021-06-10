@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Button, Dimensions, Text, TextInput, View } from 'react-native'
+import { Button, Dimensions, Image, Text, TextInput, View } from 'react-native'
+import { useDispatch } from 'react-redux';
 import ArrowButton from '../../components/common/ArrowButton';
 import AuthForm from '../../components/common/AuthForm';
 import HText from '../../components/common/HText';
 
 import RText from '../../components/common/RText';
+import { SignupUser } from '../../store/AuthSlice';
 
 import RootComponent from '../RootComponent'
 
@@ -15,42 +17,55 @@ const HEIGHT = Dimensions.get('window').height
 
 
 
-function SignUpOne({navigation, route}) {
 
+function SignUpThree({navigation, route}) {
     const [User, setUser] = useState({
-        name:"",
-        dob:""
+        password:"",
+        cpassword:""
     })
 
 
-    
     const Form = [{
-        label: 'Name',
+        label: 'Password',
         // input_type: 'email-address', 
         // label_Style:{},
         // textInput_Style:{},
-        textInput_Placeholder:"Type Name...",
+        textInput_Placeholder:"Type Password...",
         placeholder_Color:'#ededed',
-        onChangeText: (e="")=>setUser({...User, name:e.trim()}),
-        value:User.name
-
+        secureTextEntry:true,
+        onChangeText: (e="")=>setUser({...User, password:e}),
+        value:User.password
+    
     },{
-        label: 'Date Of Birth',
+        label: 'Confirm Password',
         // input_type: 'email-address', 
         // label_Style:,
         // textInput_Style:{},
-        textInput_Placeholder:"yyyy-mm-dd",
+        secureTextEntry:true,
+
+        textInput_Placeholder:"Type Confirm Password...",
         placeholder_Color:'#ededed',
-        onChangeText: (e="")=>setUser({...User, dob:e.trim()}),
-        value:User.dob
-
-
+        onChangeText: (e="")=>setUser({...User, cpassword:e}),
+        value:User.cpassword
+    
     }]
 
+    const dispatch = useDispatch();
+
+    const SignUpHandler = ()=>{
+        if(User.password !== User.cpassword)
+        return console.log("password not matched")
+        let data = {
+            ...route.params.data,
+            ...User
+        }
+        console.log(data);
+        dispatch(SignupUser(data));
+    }
 
 
     return (
-        <View style={{ flex: 1 ,marginTop:83}}>
+        <View style={{ flex: 1 }}>
             {/* form */}
             <View style={{ justifyContent: 'flex-end', alignItems: 'center', height: HEIGHT * 0.55 }}>
                 <AuthForm List={Form} />
@@ -61,18 +76,19 @@ function SignUpOne({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo',{data:User})} />
+                    <ArrowButton onPress={SignUpHandler} />
                 </View>
             </View>
 
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
                 <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
-                    <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Don’t Have an Account</RText>
-                    <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }} onPress={()=>navigation.navigate('Login', {data:User})}>Login</HText>
+                    {/* <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }}>Login</HText> */}
+                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Agree our Term & Condition</RText>
+                    
                 </View>
             </View>
         </View>
     )
 }
 
-export default RootComponent(SignUpOne)
+export default RootComponent(SignUpThree)

@@ -44,7 +44,7 @@ function FilterCategory() {
             </View>
             <View style={style.filterBox}>
                 <View>
-                    <Image style={style.filterIcon} source={require('../../../assets/icons/cil_filter.png')} />
+                    <Image style={style.filterIcon} source={require('../../assets/icons/cil_filter.png')} />
                 </View>
                 <HText style={style.filterText}>Filter</HText>
             </View>
