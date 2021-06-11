@@ -17,12 +17,11 @@ function NavContoller() {
         
     }, [isSaved, token])
     return (<>
-            {token === null
+            {/* {token === null || false
             ?(
                 <AuthStack />                
-            ):(
+            ):( */}
                 <DrawerNav /> 
-            )}
         </>
     )
 }

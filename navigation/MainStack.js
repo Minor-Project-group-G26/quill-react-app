@@ -3,13 +3,21 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import Home from '../screen/MainScreen/Home'
 import BottomNav from './BottomNav'
+import RText from '../components/common/RText'
 
 const Stack = createStackNavigator()
 
 function MainStack() {
     return (
         <Stack.Navigator initialRouteName="BottomNav">
-           <Stack.Screen name='BottomNav' component={BottomNav} />
+           <Stack.Screen name='BottomNav' component={BottomNav} 
+                options={{
+                    title:"Home",
+                    headerRight:()=> (
+                        <RText>Ankur</RText>
+                    )
+                }}
+           />
        </Stack.Navigator>
     )
 }
