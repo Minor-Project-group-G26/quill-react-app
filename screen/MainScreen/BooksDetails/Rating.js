@@ -75,6 +75,6 @@ this.setState({rating:star})
 
 class Star extends React.Component{
     render(){
-        return<FontAwesome name={this.props.filled === true?"star":"star-o"} color='yellow' size={24} style={{marginHorizontal:15}} />
+        return<FontAwesome name={this.props.filled === true?"star":"star-o"} color='yellow' size={30} style={{marginLeft:27,marginRight:0,justifyContent:'space-between'}} />
     }
 }

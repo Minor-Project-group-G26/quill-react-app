@@ -2,13 +2,14 @@ import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView, View, Text, Image,Dimensions, TouchableOpacity ,StyleSheet,TextInput, ScrollView} from 'react-native'
 import Rating from './Rating';
-
+import RText from '../../../components/common/RText'
 function BooksDetails() {
 const wid = Dimensions.get('screen').width
     return(<SafeAreaView style={styles.safe}>
             {/* ================= top ========================= */}
             <View style={styles.vue1}>
-                <Text style={{fontSize:24}}>The Hypocrite World</Text>
+
+                <RText style={{fontSize:24, fontWeight:'700',fontFamily:'Roboto'}}>The Hypocrite World</RText>
             </View>
                 {/* ===================== card details ================  */}
             <View style={styles.vue2}>
@@ -18,34 +19,34 @@ const wid = Dimensions.get('screen').width
                 />
                 <View style={styles.nestedvue1}>
                     <View style={styles.nestedvue12}>
-                        <Text style={{fontSize: 14,fontWeight:'700',fontStyle: 'italic',lineHeight: 16,letterSpacing: 0.16,textAlign: 'left', marginTop:7 }}>
+                        <Text style={{fontSize: 18,fontWeight:'700',fontStyle: 'italic',lineHeight: 18,letterSpacing: 0.16,textAlign: 'left', marginTop:20 }}>
                         Written By -
                         </Text>
-                        <Text style={{fontStyle:'normal', fontSize:14,marginTop:5 ,fontWeight:'700', color:'#950740'}}>
+                        <Text style={{fontStyle:'normal', fontSize:18,marginTop:12 ,fontWeight:'700', color:'#950740'}}>
                         Josh Luios
                         </Text>
                         <View style={styles.nestedvue121}>
-                            <Text >
+                            <Text style={{fontSize: 18,fontWeight:'700',fontStyle: 'italic',lineHeight: 18,textAlign: 'left', marginTop:7}} >
                             Rating -
                             </Text>
-                            <Text style={{height: 25,width: 30 , paddingLeft:10}}>
+                            <Text style={{height: 25,width: 30 , paddingLeft:6,fontSize: 16,fontWeight:'700', marginTop:4,color:'#950740'}}>
                             4.5
                             </Text>
-                            <Icon name="star" size={15} color="yellow"  style={{marginTop:2}}/>
+                            <Icon name="star" size={15} color="yellow"  style={{marginTop:6, marginLeft:4}}/>
                         </View>
                         <View style={styles.nestedvue122}>
-                                <Text>
+                                <Text style={{fontSize: 18,fontWeight:'700',fontStyle: 'italic',lineHeight: 21,textAlign: 'left', marginTop:7}}>
                                 Purchased -
                                 </Text>
-                                <Text style={{height: 25,width: 41, marginLeft:10}}>
+                                <Text style={{height: 25,width: 41,fontSize: 16,fontWeight:'700', marginLeft:10, marginTop:5,color:'#950740'}}>
                                 286 
                                 </Text>
                         </View>
-                        <View style={{flexDirection:'row', marginTop:11,height: 25,width: 93,}}>
-                                <Text>
+                        <View style={{flexDirection:'row', marginTop:20,height: 25,width: 93,}}>
+                                <Text style={{fontSize: 18,fontWeight:'700',fontStyle: 'italic',lineHeight: 18,textAlign: 'left', marginTop:7}}>
                                     Price -
                                 </Text>
-                                <Text style={{height: 25,width: 41, marginLeft:10}}>
+                                <Text style={{height: 25,width: 41,marginTop:5,fontSize: 16,fontWeight:'700', marginLeft:10, color:'#950740'}}>
                                      ₹ 478
                                 </Text>
                         </View>
@@ -54,95 +55,100 @@ const wid = Dimensions.get('screen').width
 
             </View>
                 {/* ============================ final Text data =================  */}
-            <View style={styles.vue3}>
-                <View style={{height: 28,width: 119,marginLeft: 39,marginTop:20}}>
-                    <Text
-                    style={{
-                    fontSize: 16,
-                    fontStyle: 'italic',
-                    fontWeight: '700',
-                    lineHeight: 18,
-                    letterSpacing: 0.16,
-                    textAlign: 'left',
+           <ScrollView style={{height: 32,width: 392,marginLeft: 39,marginTop:2}}>
+           <Text
+    style={{
+        marginTop:18,
+    fontSize: 20,
+    fontStyle: 'italic',
+    fontWeight: '700',
+    lineHeight: 20,
+    textAlign: 'left',
+    }}
+    >Description
+    </Text>
+    <Text style={{
+        marginTop:15,
+        height: 160,
+        width: 259,
+        fontSize: 14,
+        fontStyle: 'normal',
+        fontWeight: '600',
+        lineHeight: 16,
+        textAlign: 'left',
+    }}>
+    Want to instantly capture readers? No matter who you are or what genre your book falls into—nothing beats getting engrossed in a book description that leaves a reader wanting more. Short and long book descriptions both serve a purpose—to make you and your book look good. Before you start writing, here are a few things you need to know.
+    </Text>
+    <View style={{
+        height: 28,
+        width: 127,
+        marginTop:-10,
+        marginBottom:10,
+    }}>
+        <Text style={{
+            fontSize: 18,
+            fontStyle: 'italic',
+            fontWeight: '700',
+            lineHeight: 24,
+            textAlign: 'left'
+        }}>Rate this eBook</Text>
+        <Text style={{
+            fontSize: 9,
+            fontStyle: 'italic',
+            fontWeight: '700',
+            lineHeight: 15,
+            textAlign: 'left',
+            
+        }}>Tell others what you think</Text>
+    </View>
+    <View style={{marginTop:10, marginBottom:10}}>
+   <Rating/>
+    </View>
+    <View style={{flexDirection:'row',}}>
+    <TextInput
+style={{height: 95,width: 313,borderRadius: 6 ,backgroundColor:'white', paddingLeft:20}}
+    multiline={true}
+    numberOfLines={4}
+    placeholder={"Write Your View "}
+    />
+    <TouchableOpacity style={{backgroundColor:"#4EE278", justifyContent:'center',width: 30,height: 30,borderRadius:15, position:'absolute', left:270, top:58}}>
+    </TouchableOpacity>
+    </View>
+    <View style={{height: 28,width: 127, marginTop:18}}>
+        <Text style={{fontSize: 16,fontStyle: 'italic',fontWeight: '700',lineHeight: 18,textAlign: 'left'}}>Reviews</Text>
+    </View>
+    <View style={{height:150,width:392}}>
+        <View style={{flexDirection:'row', marginBottom:6,marginLeft:16}}>
+            <Text style={{fontSize: 14}}>Jhon Doe</Text>
+            <Text style={{marginLeft:130}}>23-04-2019</Text>
+        </View>
+        <View style={{width:"100%",height: 100,width: 272, backgroundColor:'white',marginLeft:16,paddingLeft:12,paddingTop:20,borderRadius:6}}>
+            <Text style={{fontSize: 13,fontStyle: 'normal',fontWeight: '400',lineHeight: 16,textAlign: 'left'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</Text>
+        </View>
+    </View>
+           </ScrollView>
 
-                    }}
-                    >Description
-                    </Text>
-                    <Text style={{
-                        marginTop:15,
-                        height: 148,
-                        width: 259,
-                        fontSize: 14,
-                        fontStyle: 'normal',
-                        fontWeight: '400',
-                        lineHeight: 16,
-                        letterSpacing: 0.16,
-                        textAlign: 'left',
-                    }}>
-                    Want to instantly capture readers? No matter who you are or what genre your book falls into—nothing beats getting engrossed in a book description that leaves a reader wanting more. Short and long book descriptions both serve a purpose—to make you and your book look good. Before you start writing, here are a few things you need to know.
-                    </Text>
-                    <View style={{
-                        height: 28,
-                        width: 127,
-                        marginTop:14
-                    }}>
-                        <Text style={{
-                            fontSize: 16,
-                            fontStyle: 'italic',
-                            fontWeight: '700',
-                            lineHeight: 18,
-                            textAlign: 'left'
-                        }}>Rate this eBook</Text>
-                        <Text style={{
-                            fontSize: 9,
-                            fontStyle: 'italic',
-                            fontWeight: '700',
-                            lineHeight: 10,
-                            textAlign: 'left',
-                            
-                        }}>Tell others what you think</Text>
-                    </View>
-                    <View style={{marginTop:10, marginBottom:10}}>
-                   <Rating/>
-                    </View>
-                    <View style={{flexDirection:'row'}}>
-                    <TextInput
-                style={{height: 76,width: 279,borderRadius: 6, backgroundColor:'white'}}
-                    multiline={true}
-                    numberOfLines={4}
-                    placeholder={"Write Your View "}
-                    />
-                    <TouchableOpacity style={{backgroundColor:"#4EE278", justifyContent:'center',width: 30,height: 30,borderRadius:15, position:'absolute', left:240, top:40}}>
-                    <Image style={{width: 9,height:9}} source={require('../../../assets/icons/Send(Fill) 1.jpg')}/>
-                    </TouchableOpacity>
-                    </View>
+            {/* // ====== End ======= // */}
 
-
-                    <View style={{height: 28,width: 127, marginTop:18}}>
-                        <Text style={{fontSize: 16,fontStyle: 'italic',fontWeight: '700',lineHeight: 18,textAlign: 'left'}}>Reviews</Text>
-                    </View>
-                    <View
+            <TouchableOpacity
                 style={{
                     position:'absolute',
-                    height: 42,
+                    height: 55,
                     width: 153,
                     borderRadius: 8,
                     backgroundColor:'#950740',
                     justifyContent:'center',
                     alignItems:'center',
                     borderRadius:8,
-                    left:173,
-                    top:375
+                    top:680,
+                    left:210
                 }}
                 >
                     <Text style={{color:'white',fontSize: 18,fontStyle: 'normal',fontWeight: '700',lineHeight: 21,textAlign: 'center'}}>
                         Buy Now
                     </Text>
-                </View>
+                </TouchableOpacity>
 
-                </View>
-               
-            </View>
            </SafeAreaView>
            )
 
@@ -169,29 +175,25 @@ const styles = StyleSheet.create({
         marginLeft: 39,
 
     },
-    nestedvue1:{
-    },
-    nestedvue1:{
+    nestedvue12:{
         marginLeft:27
 
     },
-    vue3:{},
-    txt1:{},
     img:{
-        height:152,
-        width:119,
+        height:215,
+        width:150,
         borderRadius:8
     },
     nestedvue121:{
     height: 25,
     width: 150,
-    marginTop:11,
+    marginTop:20,
     flexDirection:'row'
     },
     nestedvue122:{
         height: 25,
-        width: 93,
-        marginTop:10,
+        width: 96,
+        marginTop:20,
         flexDirection:'row' 
     },
 })
