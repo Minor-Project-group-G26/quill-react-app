@@ -3,8 +3,8 @@ import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
 import Home from '../screen/MainScreen/Home'
 // import BookList from '../screen/MainScreen/Books/BookList'
-// import Books from '../screen/MainScreen/Books'
-import BooksDetails from '../screen/MainScreen/BooksDetails'
+import Books from '../screen/MainScreen/Books'
+// import BooksDetails from '../screen/MainScreen/BooksDetails'
 
 const Stack = createStackNavigator()
 
@@ -13,8 +13,8 @@ function MainStack() {
         <Stack.Navigator initialRouteName="Home">
            {/* <Stack.Screen name='Home' component={Home} /> */}
            {/* <Stack.Screen name='Books' component={BookList} /> */}
-           {/* <Stack.Screen name='Books' component={Books} /> */}
-           <Stack.Screen name="The Hypocrite World" component={BooksDetails}/>
+           <Stack.Screen name='Books' component={Books} />
+           {/* <Stack.Screen name="The Hypocrite World" component={BooksDetails}/> */}
        </Stack.Navigator>
     )
 }

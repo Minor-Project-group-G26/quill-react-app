@@ -59,7 +59,7 @@ const data = [{key:'1',title:'Popular', ref:createRef(), con:DATA1},{key:'2',tit
     // ================================================================== Logics ============================================================================= // 
 const Tab = forwardRef(({item, onItemPress},ref)=>{
     return (
-      <TouchableOpacity onPress={onItemPress} >
+      <TouchableOpacity key={item.id} onPress={onItemPress} >
         <View ref={ref}>
         <Text style={{color:'#c3073f', fontSize:70/data.length,paddingLeft:10 ,fontWeight:'bold'}}>{item.title}</Text>
       </View>
@@ -72,10 +72,11 @@ const Tab = forwardRef(({item, onItemPress},ref)=>{
   
   
   const Indicator =({measures, scrollX})=>{
-    const inputRange = data.map((_,i)=>i*width);
+    const inputRange = data.map((_,i)=>(i*width));
+    const z = measures.map((measure)=>(measure.x))
     const translateX = scrollX.interpolate({
       inputRange,
-      outputRange:measures.map((measure)=> measure.x)
+      outputRange:z
     });
     return (<Animated.View
         style={[styles.AnimView, {transform:[{translateX}]}]}/>
@@ -91,22 +92,28 @@ const Tab = forwardRef(({item, onItemPress},ref)=>{
     const containerRef = useRef();
     useEffect(()=>{
       const m = [];
-      data.forEach(item=>{
-        item.ref.current.measureLayout(containerRef.current,(x, y, width, height)=>{
-                                                                                      m.push({x,y,width,height,});
-                                                                                      if(m.length === data.length)
-                                                                                      setMeasures(m);
-                                                                                  }
+      data.forEach((item, index)=>{
+        item.ref.current.measureLayout(
+          containerRef.current,(x, y, width, height)=>{
+            m.push({x,y,width,height});
+      if(m.length === data.length)
+      {
+            setMeasures(m);
+      }
+ }
         )
       })
+      // console.log(m)
+      // console.log("==============================")
+      // console.log(measures)
     },[]);
   
   
     return (
-    <View style={{position:'absolute',top:10, width,}}>
+    <View style={{position:'absolute',top:10, width}}>
       <View ref={containerRef} style={{ justifyContent:'space-evenly',flexDirection:"row"}}>
         {data.map((item, index)=>{
-          return (<Tab key={item.key} item={item} ref={item.ref} onItemPress={()=>onItemPress(index)}/>)
+          return <Tab key={item.key} item={item} ref={item.ref} onItemPress={()=>{onItemPress(index); console.log(measures)}}/>
         })}
       </View>
       {measures.length > 0 && <Indicator measures={measures} scrollX={scrollX}/>}
@@ -119,10 +126,10 @@ const Tab = forwardRef(({item, onItemPress},ref)=>{
   export default function Books(props) {
     const scrollX = useRef(new Animated.Value(0)).current
     
-    const ref = useRef();
+    const appref = useRef();
     
     const onItemPress = useCallback(itemIndex=>{
-      ref?.current?.scrollToOffset({
+      appref?.current?.scrollToOffset({
         offset:itemIndex*width
       })
     })
@@ -144,20 +151,25 @@ const Tab = forwardRef(({item, onItemPress},ref)=>{
       
         <FlatList
       data={data}
-      ref={ref}
+      ref={appref}
       keyExtractor={(item)=>(item.key)}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
       pagingEnabled
       onScroll={Animated.event(
-        [{nativeEvent:{contentOffset:{x:scrollX}}}],
-        { useNativeDriver: false}
+        [
+          {nativeEvent:
+            {contentOffset:
+              {x:scrollX}
+            }
+          }
+        ],{useNativeDriver:false}
       )}
       bounces={false}
       renderItem={({item})=>{
-        return (<SafeAreaView style={{width,height:655, backgroundColor:'#e5e5e5',justifyContent:'center',paddingTop:18}}>
+        return <SafeAreaView style={{width,height:655, backgroundColor:'#e5e5e5',justifyContent:'center',paddingTop:18}}>
                 <BookList data={item.con}/>
-              </SafeAreaView>)
+              </SafeAreaView>
       }}
       />
       <Tabs scrollX={scrollX} data={data} onItemPress={onItemPress}/>
