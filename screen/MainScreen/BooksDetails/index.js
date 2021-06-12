@@ -5,13 +5,18 @@ import Rating from './Rating';
 import RText from '../../../components/common/RText'
 function BooksDetails() {
 const wid = Dimensions.get('screen').width
+const h = Dimensions.get("screen").height 
     return(<SafeAreaView style={styles.safe}>
-            {/* ================= top ========================= */}
+            
+
+            <ScrollView style={{width:wid, height:h}}>
+
+                             {/* View 1  */}
             <View style={styles.vue1}>
 
-                <RText style={{fontSize:24, fontWeight:'700',fontFamily:'Roboto'}}>The Hypocrite World</RText>
+                <Text style={{fontSize:24,fontWeight:'700'}}>The Hypocrite World</Text>
             </View>
-                {/* ===================== card details ================  */}
+                                {/* View 2 */}
             <View style={styles.vue2}>
                 <Image
                 source={require('../../../assets/images/superman.jpg')}
@@ -32,7 +37,7 @@ const wid = Dimensions.get('screen').width
                             <Text style={{height: 25,width: 30 , paddingLeft:6,fontSize: 16,fontWeight:'700', marginTop:4,color:'#950740'}}>
                             4.5
                             </Text>
-                            <Icon name="star" size={15} color="yellow"  style={{marginTop:6, marginLeft:4}}/>
+                            <Icon name="star" size={15} color="#FFF500" style={{marginTop:6, marginLeft:4}}/>
                         </View>
                         <View style={styles.nestedvue122}>
                                 <Text style={{fontSize: 18,fontWeight:'700',fontStyle: 'italic',lineHeight: 21,textAlign: 'left', marginTop:7}}>
@@ -52,11 +57,13 @@ const wid = Dimensions.get('screen').width
                         </View>
                     </View>
                 </View>
-
             </View>
-                {/* ============================ final Text data =================  */}
-           <ScrollView style={{height: 32,width: 392,marginLeft: 39,marginTop:2}}>
-           <Text
+
+                                    {/* View 3 */}
+
+            <View style={{marginTop:20,marginLeft: 39,}}>
+
+            <Text
     style={{
         marginTop:18,
     fontSize: 20,
@@ -82,7 +89,7 @@ const wid = Dimensions.get('screen').width
     <View style={{
         height: 28,
         width: 127,
-        marginTop:-10,
+        marginTop:10,
         marginBottom:10,
     }}>
         <Text style={{
@@ -94,6 +101,7 @@ const wid = Dimensions.get('screen').width
         }}>Rate this eBook</Text>
         <Text style={{
             fontSize: 9,
+            color: '#4E4E50',
             fontStyle: 'italic',
             fontWeight: '700',
             lineHeight: 15,
@@ -101,36 +109,45 @@ const wid = Dimensions.get('screen').width
             
         }}>Tell others what you think</Text>
     </View>
-    <View style={{marginTop:10, marginBottom:10}}>
+    <View style={{marginTop:10,marginLeft:-22, marginBottom:10}}>
    <Rating/>
     </View>
     <View style={{flexDirection:'row',}}>
     <TextInput
-style={{height: 95,width: 313,borderRadius: 6 ,backgroundColor:'white', paddingLeft:20}}
+style={{height: 95,width: 313,borderRadius: 6 ,backgroundColor:'white',textAlignVertical:'top', padding: 10}}
     multiline={true}
-    numberOfLines={4}
+    // numberOfLines={4}
     placeholder={"Write Your View "}
     />
     <TouchableOpacity style={{backgroundColor:"#4EE278", justifyContent:'center',width: 30,height: 30,borderRadius:15, position:'absolute', left:270, top:58}}>
+        <Image
+        source={require('../../../assets/icons/Send.png')}
+        style={{
+            height:20,
+            width:20,
+            marginLeft:7
+        }}
+        />
     </TouchableOpacity>
     </View>
-    <View style={{height: 28,width: 127, marginTop:18}}>
-        <Text style={{fontSize: 16,fontStyle: 'italic',fontWeight: '700',lineHeight: 18,textAlign: 'left'}}>Reviews</Text>
+    <View style={{height: 28,width: 127, marginTop:24, marginBottom:10}}>
+        <Text style={{fontSize: 20,fontStyle: 'italic',fontWeight: '700',lineHeight: 20,textAlign: 'left'}}>Reviews</Text>
     </View>
-    <View style={{height:150,width:392}}>
-        <View style={{flexDirection:'row', marginBottom:6,marginLeft:16}}>
-            <Text style={{fontSize: 14}}>Jhon Doe</Text>
-            <Text style={{marginLeft:130}}>23-04-2019</Text>
+    <View style={{height:150,width:392, marginBottom:45}}>
+        <View style={{flexDirection:'row', marginBottom:6}}>
+            <Text style={{fontSize: 14, marginLeft:5}}>Jhon Doe</Text>
+            <Text style={{marginLeft:170}}>23-04-2019</Text>
         </View>
-        <View style={{width:"100%",height: 100,width: 272, backgroundColor:'white',marginLeft:16,paddingLeft:12,paddingTop:20,borderRadius:6}}>
+        <View style={{width:"100%",height: 100,width: 313, backgroundColor:'white',paddingLeft:12,paddingRight:12,paddingTop:20,borderRadius:6}}>
             <Text style={{fontSize: 13,fontStyle: 'normal',fontWeight: '400',lineHeight: 16,textAlign: 'left'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</Text>
         </View>
     </View>
-           </ScrollView>
+        </View>
+            </ScrollView>
+            {/* Button Type */}
 
-            {/* // ====== End ======= // */}
 
-            <TouchableOpacity
+        <TouchableOpacity
                 style={{
                     position:'absolute',
                     height: 55,
@@ -140,7 +157,7 @@ style={{height: 95,width: 313,borderRadius: 6 ,backgroundColor:'white', paddingL
                     justifyContent:'center',
                     alignItems:'center',
                     borderRadius:8,
-                    top:680,
+                    bottom:5,
                     left:210
                 }}
                 >
@@ -148,7 +165,6 @@ style={{height: 95,width: 313,borderRadius: 6 ,backgroundColor:'white', paddingL
                         Buy Now
                     </Text>
                 </TouchableOpacity>
-
            </SafeAreaView>
            )
 

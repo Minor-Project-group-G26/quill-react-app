@@ -14,7 +14,7 @@ function MainStack() {
            {/* <Stack.Screen name='Home' component={Home} /> */}
            {/* <Stack.Screen name='Books' component={BookList} /> */}
            {/* <Stack.Screen name='Books' component={Books} /> */}
-           <Stack.Screen name="Description" component={BooksDetails}/>
+           <Stack.Screen name="The Hypocrite World" component={BooksDetails}/>
        </Stack.Navigator>
     )
 }
