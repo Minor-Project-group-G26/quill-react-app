@@ -12,10 +12,7 @@ function MainStack() {
         <Stack.Navigator initialRouteName="BottomNav">
            <Stack.Screen name='BottomNav' component={BottomNav} 
                 options={{
-                    title:"Home",
-                    headerRight:()=> (
-                        <RText>Ankur</RText>
-                    )
+                    headerShown: false
                 }}
            />
        </Stack.Navigator>

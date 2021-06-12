@@ -9,9 +9,9 @@ import AuthStack from './navigation/AuthStack'
 import MainStack from './navigation/MainStack'
 export default function App() {
   const token = store.getState().auth.token
-  const sample = store.getState().sample.sample
+  const sample = store.getState().swapStore
   // const token = null;
-  // console.log(token, sample)
+  console.log(token, sample)
   return (
     <Provider store={store}>
       <NavigationContainer>

@@ -7,9 +7,9 @@ const TapStack = createBottomTabNavigator();
 
 
 
-const Search = () => <View><Text>Search</Text></View>
-const Quiz = () => <View><Text>Quiz</Text></View>
-const Profile = () => <View><Text>Profile</Text></View>
+export const Search = () => <View><Text>Search</Text></View>
+export const Quiz = () => <View><Text>Quiz</Text></View>
+export const Profile = () => <View><Text>Profile</Text></View>
 
 
 const BottomTabList = [
@@ -47,10 +47,8 @@ function BottomNav() {
     return (
         <TapStack.Navigator  tabBarOptions={{
             // tabStyle:{backgroundColor:'#4E4E50', paddingTop: 8, paddingBottom: 8, justifyContent:'space-around'},
-            style:{height: 55, borderTopLeftRadius:30, backgroundColor:'#4E4E50',borderTopRightRadius:30, paddingBottom:0},
-            showLabel:false
-            
-
+            style:{height: 55, backgroundColor:'#4E4E50', paddingBottom:0 },
+            showLabel:false,
         }} >
             {BottomTabList.map((item, index)=>(
 
