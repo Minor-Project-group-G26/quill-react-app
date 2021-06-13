@@ -51,7 +51,7 @@ const CourseDataList = [
 ]
 
 
-function Home() {
+function Home(props) {
     const dispatch = useDispatch()
     const [selectedOption, setSelectedOption] = useState('Popular')
     const HeaderOptionHandler = (text) => setSelectedOption(text)
@@ -69,15 +69,15 @@ function Home() {
                     <HeaderOption onPress={HeaderOptionHandler} data={selectedOption} />
                 </View>
                 <View style={{ marginVertical: 16 }}>
-                    <TopHorizontalComponent />
+                    <TopHorizontalComponent {...props} />
                 </View>
                 <RText style={{ fontFamily: 'Roboto-Bold', color: '#C3073F', fontSize: 20, marginLeft: 16 }}>Latest</RText>
                 <View style={{ marginVertical: 16 }}>
-                    <LastActivityComponent />
+                    <LastActivityComponent {...props}  />
                 </View>
                 <RText style={{ fontFamily: 'Roboto-Bold', color: '#C3073F', fontSize: 20, marginLeft: 16 }}>You might like</RText>
                 <View>
-                    <YouMightLikeComponent />
+                    <YouMightLikeComponent {...props}  />
                 </View>
             </ScrollView>
         </View>
@@ -114,7 +114,7 @@ const TopHorizontalComponent = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <TouchableOpacity style={{ paddingHorizontal: 16 }}>
+                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=> props.navigation.navigate('FilterCategory')}>
                         <View><Image source={item.image} style={{ width: 200, height: 120, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 185 }}>
                             <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 17, color: "#fff" }}>{textHandler(item.title)} </RText>
@@ -138,7 +138,7 @@ const LastActivityComponent = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <TouchableOpacity style={{ paddingHorizontal: 16 }}>
+                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=>props.navigation.navigate('CourseInfo')}>
                         <View><Image source={item.image} style={{ width: 145, height: 90, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 135 }}>
                             <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 14, color: "#fff" }}>{textHandler(item.title)} </RText>
@@ -157,7 +157,7 @@ const YouMightLikeComponent = (props) => {
     return (
         <View>
             {CourseDataList.map((item, index) => (
-                <View key={index} style={{ flexDirection: 'row' , marginVertical:16}}>
+                <View key={index+"fddfdsfad"} style={{ flexDirection: 'row' , marginVertical:16}}>
                     <View style={{paddingHorizontal: 16}}>
                         <Image source={item.image} style={{ width: 100, height: 65, borderRadius: 10 }} />
                     </View>

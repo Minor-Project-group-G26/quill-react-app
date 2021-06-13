@@ -13,13 +13,13 @@ export const request = async(method='get', url, data=null)=>{
         case "get":
             config= {
                 method: method,
-                url: "http://192.168.0.6:5000/"+url,
+                url: "http://192.168.43.216:5000/"+url,
             }
             break;
         case "post":
             config= {
                 method: method,
-                url: "http://192.168.0.6:5000/"+url,
+                url: "http://192.168.43.216:5000/"+url,
                 data: data,
                 headers: headers
             }
