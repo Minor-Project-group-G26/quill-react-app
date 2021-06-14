@@ -1,6 +1,6 @@
 import React from 'react'
 import {FontAwesome} from '@expo/vector-icons'
-import { Animated, TouchableWithoutFeedback, View} from 'react-native';
+import { Animated, TouchableWithoutFeedback, View,Dimensions} from 'react-native';
 import { Easing } from 'react-native-reanimated';
 
 const numStars = 5
@@ -46,7 +46,7 @@ this.setState({rating:star})
     });
 
     const animationStyle = {
-        transform:[{scale:animateScale},{rotate:animateWobble}],
+        // transform:[{scale:animateScale}],
         opacity:animateOpacity
     }
 
@@ -75,6 +75,6 @@ this.setState({rating:star})
 
 class Star extends React.Component{
     render(){
-        return<FontAwesome name='star' color={this.props.filled === true?"#FFF500":"#FFFFFF"} size={30} style={{marginLeft:34,marginRight:0,justifyContent:'space-between'}} />
+        return<FontAwesome name='star' color={this.props.filled === true?"#FFF500":"#FFFFFF"} size={30} style={{marginLeft:30,marginRight:0,justifyContent:'space-between'}} />
     }
 }
