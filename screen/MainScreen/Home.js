@@ -90,7 +90,7 @@ export default RootComponent(Home)
 const HeaderOption = (props) => {
     return (
         <FlatList
-            data={['Popular', 'Newest', 'For you', 'Recommended',"Trending"]}
+            data={['Popular', 'Newest', 'For You', 'Recommended',"Trending"]}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => (
@@ -106,7 +106,7 @@ const HeaderOption = (props) => {
 
 
 const TopHorizontalComponent = (props) => {
-    const textHandler = (text = "") => text.length > 38 ? text.slice(0, 30) + "..." : text
+    const textHandler = (text = "") => text.length > 44 ? text.slice(0, 41) + "..." : text
     return (
         <View>
             <FlatList
@@ -114,10 +114,10 @@ const TopHorizontalComponent = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=> props.navigation.navigate('FilterCategory')}>
+                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=> props.navigation.navigate('CourseHome')}>
                         <View><Image source={item.image} style={{ width: 200, height: 120, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 185 }}>
-                            <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 17, color: "#fff" }}>{textHandler(item.title)} </RText>
+                            <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 16, color: "#fff",height: 40, overflow:"hidden" }}>{textHandler(item.title)} </RText>
                             <RText style={{ fontSize: 14, color: '#C4C4C4', fontFamily: 'Roboto-Light' }}>{item.from}</RText>
                         </View>
                     </TouchableOpacity>
@@ -141,7 +141,7 @@ const LastActivityComponent = (props) => {
                     <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=>props.navigation.navigate('CourseInfo')}>
                         <View><Image source={item.image} style={{ width: 145, height: 90, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 135 }}>
-                            <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 14, color: "#fff" }}>{textHandler(item.title)} </RText>
+                            <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 14, color: "#fff", height: 35, overflow:"hidden" }}>{textHandler(item.title)} </RText>
                             <RText style={{ fontSize: 12, color: '#C4C4C4', fontFamily: 'Roboto-Light' }}>{item.from}</RText>
                         </View>
                     </TouchableOpacity>

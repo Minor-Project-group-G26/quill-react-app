@@ -3,11 +3,12 @@ import {BottomTabBar, createBottomTabNavigator} from '@react-navigation/bottom-t
 import Home from '../screen/MainScreen/Home'
 import { Image, Text, View } from 'react-native'
 import RText from '../components/common/RText'
+import Search from '../screen/MainScreen/Search'
+
 const TapStack = createBottomTabNavigator();
 
 
 
-export const Search = () => <View><Text>Search</Text></View>
 export const Quiz = () => <View><Text>Quiz</Text></View>
 export const Profile = () => <View><Text>Profile</Text></View>
 

@@ -76,7 +76,6 @@ function DrawerContainer(props) {
     
     ]
     // const route = useRoute()
-    console.log(props.route)
 
     return (
         <SafeAreaView style={{flex:1, backgroundColor:'#CACACA'}}>
