@@ -16,7 +16,7 @@ function NavContoller() {
         
     }, [isSaved, token])
     return (<>
-            {token === null
+            {token !== null
             ?(
                 <AuthStack />                
             ):(
