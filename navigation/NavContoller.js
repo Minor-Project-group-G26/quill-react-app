@@ -7,6 +7,7 @@ import { CheckToken } from '../store/AuthSlice'
 import DrawerNav from './DrawerNav'
 
 function NavContoller() {
+
     const {token, isSaved} = useSelector(state => state.auth);
     // const token = null;
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ function NavContoller() {
                 <DrawerNav /> 
         </>
     )
+
 }
 
 export default NavContoller

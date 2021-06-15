@@ -4,6 +4,8 @@ import Home from '../screen/MainScreen/Home'
 import { Image, Text, View } from 'react-native'
 import RText from '../components/common/RText'
 import Search from '../screen/MainScreen/Search'
+import { useSelector } from 'react-redux'
+import Books from '../screen/MainScreen/Books'
 
 const TapStack = createBottomTabNavigator();
 
@@ -13,38 +15,45 @@ export const Quiz = () => <View><Text>Quiz</Text></View>
 export const Profile = () => <View><Text>Profile</Text></View>
 
 
-const BottomTabList = [
-    {
-    name:'Home',
-    title:'Home',
-    imgStyle:{width: 24, height:21},
-    image:require('../assets/icons/home.png'),
-    component: Home
-    },
-    {
-    name:'Search',
-    title:'Search',
-    imgStyle:{width: 24, height:24},
-    image:require('../assets/icons/search.png'),
-    component:Search
-    },
-    {
-    name:'Quiz',
-    title:'Quiz',
-    imgStyle:{width: 24, height:24},
-    image:require('../assets/icons/quiz.png'),
-    component:Quiz
-    },
-    {
-    name:'Profile',
-    title:'Profile',
-    imgStyle:{width: 20, height:24},
-    image:require('../assets/icons/profile.png'),
-    component:Profile
-    },
-]
 
 function BottomNav() {
+    
+    const swapStore = useSelector(state => state.swapStore)
+
+
+    const BottomTabList = [
+        {
+        name:'Home',
+        title:'Home',
+        imgStyle:{width: 24, height:21},
+        image:require('../assets/icons/home.png'),
+        component: swapStore.store==='Books'? Books:Home
+        },
+        {
+        name:'Search',
+        title:'Search',
+        imgStyle:{width: 24, height:24},
+        image:require('../assets/icons/search.png'),
+        component:Search
+        },
+        {
+        name:'Quiz',
+        title:'Quiz',
+        imgStyle:{width: 24, height:24},
+        image:require('../assets/icons/quiz.png'),
+        component:Quiz
+        },
+        {
+        name:'Profile',
+        title:'Profile',
+        imgStyle:{width: 20, height:24},
+        image:require('../assets/icons/profile.png'),
+        component:Profile
+        },
+    ]
+
+
+
     return (
         <TapStack.Navigator  tabBarOptions={{
             // tabStyle:{backgroundColor:'#4E4E50', paddingTop: 8, paddingBottom: 8, justifyContent:'space-around'},

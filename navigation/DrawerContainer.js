@@ -65,11 +65,11 @@ function DrawerContainer(props) {
         },
         {
          name: 'Wishlist',
-         icon: require('../assets/icons/Wishlist.png'),
+         icon: require('../assets/icons/Wishlist1.png'),
          style: {width: 16, height:16},
          route: 'Wishlish',
          onPress: ()=> {
-            props.navigation.navigate('Wishlish')
+            props.navigation.navigate('Wishlist')
          }
 
         },

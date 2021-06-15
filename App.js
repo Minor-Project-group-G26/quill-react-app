@@ -15,6 +15,7 @@ export default function App() {
   console.log(token, sample)
   return (
     <Provider store={store}>
+      <StatusBar backgroundColor='#000' style={'light'} />
       <NavigationContainer>
          <NavContoller />
       </NavigationContainer>

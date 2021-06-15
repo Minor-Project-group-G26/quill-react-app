@@ -22,6 +22,7 @@ const WeeklyData= [
     {
         title:"Introduction",
         type: 'video'
+        
     },
     {
         title:"Introduction",
@@ -56,10 +57,29 @@ const WeeklyData= [
 
 function CourseHome(props) {
     const [selectedOption, setSelectedOption] = useState(0)
+
+    const HeaderOptionHandler = (item, index)=>{
+        switch (item) {
+            case 'Info':
+                props.navigation.navigate('CourseInfo')
+                break;
+            case 'Form':
+                
+                break;
+        
+            default:
+                setSelectedOption(index);
+                break;
+        }
+    }
+
+
     return (
         <View style={{flex:1, backgroundColor:'#C4C4C4'}}>
             <View style={{width:WIDTH, height:220, backgroundColor:'#000'}}>
-                <VideoPlayer video={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')} />
+                <VideoPlayer 
+                // video={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')} 
+                />
             </View>
             <View style={{padding:16}}>
                 <FlatList 
@@ -68,7 +88,7 @@ function CourseHome(props) {
                     horizontal={true}
                     renderItem={({item, index})=>(
                         <AText 
-                            onPress={()=> setSelectedOption(index)} 
+                            onPress={()=> HeaderOptionHandler(item, index)} 
                             style={{fontFamily: 'Arial-Bold', color:selectedOption===index?'#0000FF':"#4E4E50", fontSize: 14, marginHorizontal:16}}>{item}</AText>
                     )}
                     keyExtractor={(item, index)=>"fadsfadsfa"+ index}
