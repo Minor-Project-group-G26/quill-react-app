@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Dimensions, StyleSheet, View, Button, TouchableOpacity, Image, FlatList } from 'react-native'
 import RText from '../../components/common/RText'
 import RootComponent from '../RootComponent'
-import { Video, AVPlaybackStatus } from 'expo-av';
 import AText from '../../components/common/AText';
+import VideoPlayer from '../../components/custom/VideoPlayer';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -54,12 +54,12 @@ const WeeklyData= [
 ]
 
 
-function CourseHome() {
+function CourseHome(props) {
     const [selectedOption, setSelectedOption] = useState(0)
     return (
         <View style={{flex:1, backgroundColor:'#C4C4C4'}}>
             <View style={{width:WIDTH, height:220, backgroundColor:'#000'}}>
-                <VideoPlayer />
+                <VideoPlayer video={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')} />
             </View>
             <View style={{padding:16}}>
                 <FlatList 
@@ -79,7 +79,9 @@ function CourseHome() {
                     data={WeeklyData}
                     ItemSeparatorComponent={()=>(<View style={{height:1, backgroundColor:'#B2B2B2'}}></View>)}
                     renderItem={({item, index})=>(
-                        <View style={{flexDirection:'row', alignItems:'center', marginVertical:16}}>
+                        <TouchableOpacity 
+                        onPress={()=> props.navigation.navigate('CourseData', {headerTitle: item.title})}
+                        style={{flexDirection:'row', alignItems:'center', marginVertical:16}}>
                             <AText style={{marginHorizontal:16,fontFamily: 'Arial-Bold'}}>{index+1}.</AText>
                             <View style={{marginHorizontal:8, backgroundColor:'#fff', borderRadius:30, overflow:'hidden', alignItems:'center'}}>
                                 <Image 
@@ -88,7 +90,7 @@ function CourseHome() {
                                     />        
                             </View>
                             <RText style={{fontFamily: 'Roboto', marginHorizontal: 16}}>{item.title}</RText>
-                        </View>
+                        </TouchableOpacity>
                     )}
                     keyExtractor={(item, index)=>"fsdfafafa"+index+item.title}
                 />
@@ -101,40 +103,40 @@ export default RootComponent(CourseHome, false)
 
 
 
-const VideoPlayer = (props) => {
-    const video = React.useRef(null);
-    const [status, setStatus] = React.useState({});
-    const [PlayedOnce, setPlayedOnce] = useState(false)
-    return (
-        <View style={styles.container}>
-            <Video
-                ref={video}
-                style={styles.video}
-                source={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')}
-                useNativeControls
-                resizeMode="contain"
-                isLooping
-                onPlaybackStatusUpdate={status => setStatus(() => status)}
-            />
-            {
-                PlayedOnce
-                    ? null
-                    : (
+// const VideoPlayer = (props) => {
+//     const video = React.useRef(null);
+//     const [status, setStatus] = React.useState({});
+//     const [PlayedOnce, setPlayedOnce] = useState(false)
+//     return (
+//         <View style={styles.container}>
+//             <Video
+//                 ref={video}
+//                 style={styles.video}
+//                 source={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')}
+//                 useNativeControls
+//                 resizeMode="contain"
+//                 isLooping
+//                 onPlaybackStatusUpdate={status => setStatus(() => status)}
+//             />
+//             {
+//                 PlayedOnce
+//                     ? null
+//                     : (
 
-                        <TouchableOpacity
-                            style={styles.buttons}
-                            onPress={() => {
-                                video.current.playAsync()
-                                setPlayedOnce(true)
-                            }}>
-                            <Image source={require('../../assets/icons/Polygon1.png')} style={{ width: 28, height: 32, tintColor: '#fff' }} />
-                        </TouchableOpacity>
-                    )
-            }
-        </View>
+//                         <TouchableOpacity
+//                             style={styles.buttons}
+//                             onPress={() => {
+//                                 video.current.playAsync()
+//                                 setPlayedOnce(true)
+//                             }}>
+//                             <Image source={require('../../assets/icons/Polygon1.png')} style={{ width: 28, height: 32, tintColor: '#fff' }} />
+//                         </TouchableOpacity>
+//                     )
+//             }
+//         </View>
 
-    )
-}
+//     )
+// }
 
 
 const styles = StyleSheet.create({
