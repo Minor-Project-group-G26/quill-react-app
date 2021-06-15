@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView, View, Text, Image,Dimensions, TouchableOpacity ,StyleSheet,TextInput, ScrollView} from 'react-native'
 import Rating from './Rating';
 import RText from '../../../components/common/RText'
+import HText from '../../../components/common/HText'
 function BooksDetails() {
 const wid = Dimensions.get('window').width
 const h = Dimensions.get("window").height 
@@ -45,8 +46,10 @@ const h = Dimensions.get("window").height
                         <Text style={styles.Tell}> Tell Others what you think</Text>
                     </View>
                     <View style={styles.ReviewBox}>
-                        <View style={{marginLeft:10, marginBottom:10}}>
+                        <View style={{marginLeft:25, width:290, marginBottom:10}}>
+                            <View style={{marginLeft:-5}}>
                             <Rating/>
+                            </View>
                         </View>
                         <View style={{position:'relative', height:95, width:290,marginHorizontal:45}}>
                                 <TextInput
@@ -67,14 +70,14 @@ const h = Dimensions.get("window").height
                                 </TouchableOpacity>
                         </View>
                     </View>
-                    <Text style={{width: 127,height: 28,fontStyle: 'italic',fontWeight:'bold',fontSize: 18,lineHeight: 18,color: '#1A1A1D',marginLeft:42}}>Reviews</Text>
+                    <Text style={{width: 127,height: 28,fontStyle: 'italic',fontWeight:'bold',fontSize: 20,lineHeight: 20,color: '#1A1A1D',marginLeft:42}}>Reviews</Text>
                     <View style={styles.ReviewBox2}>
                         <View style={{flexDirection:'row',marginTop:10,marginBottom:5}}>
                             <Text style={{marginLeft:50,fontSize: 14,lineHeight:16}}>Jhon Doe</Text>
                             <Text style={{marginRight:40, marginLeft:140,fontSize: 14,lineHeight:16}}>23-04-2019</Text>
                         </View>
-                        <View style={{position:'relative', height:105, width:290,marginHorizontal:45, backgroundColor:'white', borderRadius:15,paddingVertical:15,paddingHorizontal:10}}>
-                                    <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</Text>
+                        <View style={{position:'relative', height:110, width:290,marginHorizontal:45, backgroundColor:'white',position:'relative', borderRadius:6}}>
+                                    <HText style={{position:'absolute',paddingVertical:5,paddingHorizontal:10}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</HText>
                         </View>
                     </View>
                 </View>
