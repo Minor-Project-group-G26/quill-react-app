@@ -6,6 +6,7 @@ import FilterCategory from '../screen/MainScreen/FilterCategory'
 import CourseInfo from '../screen/MainScreen/CourseInfo'
 import Profile from '../screen/MainScreen/Profile'
 import RText from '../components/common/RText'
+import PersonalSetting from '../screen/MainScreen/PersonalSetting';
 
 const Stack = createStackNavigator()
 
@@ -18,7 +19,7 @@ function MainStack() {
            {/* <Stack.Screen name='Home' component={Home} /> */}
            {/* <Stack.Screen name='Filter Category' component={FilterCategory} /> */}
            {/* <Stack.Screen name='CourseInfo' component={CourseInfo} /> */}
-           <Stack.Screen 
+           {/* <Stack.Screen 
                 name='Profile'
                 component={Profile}
                 options={{
@@ -40,6 +41,14 @@ function MainStack() {
                         </View>
                         
                     )
+                }}
+            /> */}
+            <Stack.Screen 
+                name="PersonalSetting"
+                component={PersonalSetting}
+                options={{
+                    title: 'Personal Setting',
+                    headerTintColor: '#950740'
                 }}
             />
 
