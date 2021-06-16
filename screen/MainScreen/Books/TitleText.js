@@ -1,5 +1,6 @@
 import React from 'react'
 import {View,Text,StyleSheet} from 'react-native'
+import RText from '../../../components/common/RText'
 function TitleText(props) {
 if (props.data.length > 19) {
     const res = props.data.slice(16);
@@ -7,18 +8,18 @@ if (props.data.length > 19) {
 
     return (
         <View style={{marginTop:'20%'}}>
-            <Text style={styles.cardTitle}>
+            <RText style={styles.cardTitle}>
                 {res2}
-            </Text>
+            </RText>
         </View>
     )
     
 } else {
     return (
         <View style={{marginTop:'20%'}}>
-            <Text style={styles.cardTitle}>
+            <RText style={styles.cardTitle}>
                 {props.data}
-            </Text>
+            </RText>
         </View>
     )
 }
@@ -33,5 +34,6 @@ const styles = StyleSheet.create({
         maxHeight: 50,
         fontSize: 16,
         overflow:'hidden',
+        fontFamily:'Roboto-Bold',
     },
 })

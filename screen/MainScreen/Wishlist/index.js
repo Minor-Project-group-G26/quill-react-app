@@ -29,7 +29,7 @@ const im2 = require('../../../assets/images/Spiderman.jpg')
                                                 <RText style={styles.corseData3}>₹ 199</RText>
                                             </View>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={{backgroundColor:'red',position:'absolute',elevation:20, left:360,justifyContent:'center', height:20,width:20, borderRadius:10,marginTop:5}} onPress={()=>console.warn("Cross")}>
+                                        <TouchableOpacity style={{backgroundColor:'red',position:'absolute',elevation:20, alignSelf:'flex-end',justifyContent:'center', height:20,width:20, borderRadius:10,marginTop:5,right:13}} onPress={()=>console.warn("Cross")}>
                                             <Icon name="close" size={15} color="white" style={{alignSelf:'center'}}/>
                                         </TouchableOpacity>
                                     </View>
@@ -44,13 +44,13 @@ const im2 = require('../../../assets/images/Spiderman.jpg')
                         horizontal={true}
                         keyExtractor={(item)=>(item.id)}
                         renderItem={({item})=>{
-                            return(<View style={{marginTop:30}}>
+                            return(<View style={{marginTop:30, padding:13}}>
                                         <TouchableOpacity style={styles.booksBox}>
                                             <Image style={styles.booksImg} source={item.img}/>
                                             <RText style={styles.booksData}>{item.desc}</RText>
                                             <RText style={{alignSelf:'flex-start',fontFamily:'Roboto-Bold',marginTop:5}}>₹ 478</RText>
                                         </TouchableOpacity>
-                                        <TouchableOpacity style={{backgroundColor:'red',position:'absolute',justifyContent:'center',left:120,top:-5, height:20,width:20, borderRadius:10}} onPress={()=>console.warn("Cross")}>
+                                        <TouchableOpacity style={{backgroundColor:'red',position:'absolute',justifyContent:'center',alignSelf:'flex-end',height:20,width:20, borderRadius:10,top:5,right:2}} onPress={()=>console.warn("Cross")}>
                                         <Icon name="close" size={15} color="white" style={{alignSelf:'center'}}/>
                                         </TouchableOpacity>
                                    </View>
@@ -134,17 +134,15 @@ const styles = StyleSheet.create({
     },
     booksBox:{
         width: 106,
-        marginLeft:22,
         alignItems:'center',
-        // backgroundColor:'cyan'
     },
     booksImg:{
-        width: 116,
+        width: 110,
         height: 176,
         borderRadius:6,
     },
     booksData:{
-        marginTop:20,
+        marginTop:16,
         fontFamily:'Roboto'
         // backgroundColor:'green'
     },

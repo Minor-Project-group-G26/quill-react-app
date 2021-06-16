@@ -68,7 +68,7 @@ function MainStack() {
            <Stack.Screen name='BooksDetails' component={BooksDetails}  options={({route})=>({
                headerRight:()=>(
                     <TouchableOpacity style={{borderRadius:30,marginRight:30, elevation:10, backgroundColor:'#fff'}}>
-                        <Image source={require('../assets/icons/wishlist.png')} style={{height:30,width:30, margin:5}}/>
+                        <Image source={require('../assets/icons/Wishlist2.png')} style={{height:25,width:25, margin:5}}/>
                     </TouchableOpacity>
                 ),
                 headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/>
