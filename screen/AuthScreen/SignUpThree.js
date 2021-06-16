@@ -59,7 +59,7 @@ function SignUpThree({navigation, route}) {
             ...route.params.data,
             ...User
         }
-        console.log(data);
+        // console.log(data);
         dispatch(SignupUser(data));
     }
 
@@ -83,7 +83,7 @@ function SignUpThree({navigation, route}) {
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
                 <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
                     {/* <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }}>Login</HText> */}
-                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Agree our Term & Condition</RText>
+                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 30 }}>Agree our Term & Condition</RText>
                     
                 </View>
             </View>

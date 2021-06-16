@@ -67,7 +67,7 @@ function SignUpOne({navigation, route}) {
 
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
                 <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
-                    <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>Don’t Have an Account</RText>
+                    <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 8 }}>Already have an Account</RText>
                     <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }} onPress={()=>navigation.navigate('Login', {data:User})}>Login</HText>
                 </View>
             </View>

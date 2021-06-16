@@ -4,8 +4,10 @@ import AuthStack from './AuthStack'
 import MainStack from './MainStack'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckToken } from '../store/AuthSlice'
+import DrawerNav from './DrawerNav'
 
 function NavContoller() {
+
     const {token, isSaved} = useSelector(state => state.auth);
     // const token = null;
     const dispatch = useDispatch()
@@ -16,14 +18,15 @@ function NavContoller() {
         
     }, [isSaved, token])
     return (<>
-            {token !== null
+
+            {/* {token === null || false
             ?(
                 <AuthStack />                
-            ):(
-                <MainStack /> 
-            )}
+            ):( */}
+                <DrawerNav /> 
         </>
     )
+
 }
 
 export default NavContoller

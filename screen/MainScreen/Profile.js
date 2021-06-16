@@ -4,20 +4,52 @@ import RootComponent from '../RootComponent';
 import RText from '../../components/common/RText';
 import AText from '../../components/common/AText';
 
-const options = [
-    "Profile Setting",
-    "Manage Password",
-    "My Courses",
-    "My Library",
-    "Notification",
-    "Achievements",
-    "Downloads",
-    "Wishlist",
-    "About Us",
-    "Log out"
-]
 
-function Profile() {
+
+function Profile({navigation}) {
+
+    const options = [
+        {
+            name:"Personal Setting",
+            onPress: () => navigation.navigate('PersonalSetting')
+        },
+        {
+            name:"Manage Password",
+            onPress: null
+        },
+        {
+            name:"My Courses",
+            onPress: null
+        },
+        {
+            name:"My Library",
+            onPress: null
+        },
+        {
+            name:"Notification",
+            onPress: null
+        },
+        {
+            name:"Achievements",
+            onPress: null
+        },
+        {
+            name:"Downloads",
+            onPress: null
+        },
+        {
+            name:"Wishlist",
+            onPress: null
+        },
+        {
+            name:"About Us",
+            onPress: null
+        },
+        {
+            name:"Log out",
+            onPress: null
+        },
+    ]
 
     const [swapColor, setswapColor] = useState(-1)
 
@@ -27,11 +59,14 @@ function Profile() {
 
     const renderOptions = options.map((item, index) => (
         <TouchableOpacity 
-            onPress={() => ChangeColor(index)}
+            onPress={() => {
+                ChangeColor(index)
+                item.onPress()
+            }}
             key={index} 
             style={[style.crate, swapColor === index? style.swap: {}]}
         >
-            <RText onPress={() => ChangeColor(index)} style={style.crateText}>{item}</RText>
+            <RText style={style.crateText}>{item.name}</RText>
         </TouchableOpacity>
     ))
 

@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -9,11 +10,12 @@ import AuthStack from './navigation/AuthStack'
 import MainStack from './navigation/MainStack'
 export default function App() {
   const token = store.getState().auth.token
-  const sample = store.getState().sample.sample
+  const sample = store.getState().swapStore
   // const token = null;
   console.log(token, sample)
   return (
     <Provider store={store}>
+      <StatusBar backgroundColor='#000' style={'light'} />
       <NavigationContainer>
          <NavContoller />
       </NavigationContainer>

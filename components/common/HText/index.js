@@ -12,7 +12,7 @@ const fetchFont = ()=>Font.loadAsync({
     
 });
 
-function HText({style, children="", onPress=()=>{}}) {
+function HText({style, children="", onPress=null}) {
         const [fontLoaded, setFontLoaded] = useState(false)
  
         let styles = {

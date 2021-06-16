@@ -1,13 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit' ;
 import AuthSlice from './AuthSlice';
-import SampleSlice from './SampleSlice';
+import RouterSlice from './RouterSlice';
+import SwapStoreSlice from './SwapStoreSlice';
 // import {} from '@reduxjs/toolkit'
 
 
 const store = configureStore({
     reducer:{
         auth: AuthSlice,
-        sample: SampleSlice,
+        swapStore: SwapStoreSlice,
+        // routerController: RouterSlice
     }
 })
 

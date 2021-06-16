@@ -64,8 +64,8 @@ function SignUpTwo({navigation, route}) {
             </View>
 
             <View style={{ height: HEIGHT * 0.23, position: "relative", alignItems: 'center' }}>
-                <View style={{ alignItems: 'center', position: 'absolute', bottom: 20 }}>
-                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 10 }}>or continue with</RText>
+                <View style={{ alignItems: 'center', position: 'absolute', bottom: 40 }}>
+                    <RText style={{ fontSize: 18, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 8 }}>or continue with</RText>
                     {/* <HText style={{ fontSize: 20, fontFamily: 'Humnst777', color: '#C3073F', marginVertical: 8 }}>Login</HText> */}
                     <View style={{flexDirection:'row', width:WIDTH*0.8, justifyContent:'space-around'}}>
                       <Image

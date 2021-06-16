@@ -21,14 +21,14 @@ const fetchFont = ()=>Font.loadAsync({
     
 });
 
-function RText({style, children="", onPress=()=>{}}) {
+function RText({style={}, children="", onPress=null}) {
         const [fontLoaded, setFontLoaded] = useState(false)
  
         let styles = {
             fontSize:16,
             color: '#000',
+            fontFamily:'Roboto',
             // fontWeight:'bold',
-            ...style,
         }
 
       if (!fontLoaded) {
@@ -42,7 +42,7 @@ function RText({style, children="", onPress=()=>{}}) {
       }
         return (
         <>
-            <Text style={styles} onPress={onPress}>{children}</Text>
+            <Text style={[styles, style]} onPress={onPress}>{children}</Text>
         </>
     )
 }
