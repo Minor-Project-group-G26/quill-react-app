@@ -42,7 +42,7 @@ function DrawerContainer(props) {
          style: {width: 19, height:22},
          route: 'MyCourse',
          onPress: ()=> {
-            props.navigation.navigate('MyCourse')
+            props.navigation.navigate('MyCourses')
          }
         },
         {

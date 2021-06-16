@@ -13,6 +13,7 @@ import { Text,View,Image,TouchableOpacity } from 'react-native'
 import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
+import MyCourses from '../screen/MainScreen/MyCourses'
 
 
 const Stack = createStackNavigator()
@@ -74,6 +75,9 @@ function MainStack() {
                 headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/>
            {/* <Stack.Screen name='Books' component={Books} /> */}
            <Stack.Screen name="Wishlist" component={Wishlist}/>
+           <Stack.Screen name="MyCourses"  component={MyCourses} options={{
+               headerTitleStyle:{color:'#950740'}
+           }}/>
        </Stack.Navigator>
     )
 }
