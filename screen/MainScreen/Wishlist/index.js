@@ -38,17 +38,17 @@ const im2 = require('../../../assets/images/Spiderman.jpg')
                         />
                 </View>
                 <RText style={styles.header}>Your Books</RText>
-                <View style={{height:'40%',width:'100%'}}>
+                <View style={{height:'43%',width:'100%'}}>
                         <FlatList
                         data={books}
                         horizontal={true}
                         keyExtractor={(item)=>(item.id)}
                         renderItem={({item})=>{
-                            return(<View style={{marginTop:30, padding:13}}>
+                            return(<View style={{padding:13,paddingBottom:0,marginBottom:20}}>
                                         <TouchableOpacity style={styles.booksBox}>
                                             <Image style={styles.booksImg} source={item.img}/>
                                             <RText style={styles.booksData}>{item.desc}</RText>
-                                            <RText style={{alignSelf:'flex-start',fontFamily:'Roboto-Bold',marginTop:5}}>₹ 478</RText>
+                                            <RText style={{alignSelf:'flex-start',fontFamily:'Roboto-Bold'}}>₹ 478</RText>
                                         </TouchableOpacity>
                                         <TouchableOpacity style={{backgroundColor:'red',position:'absolute',justifyContent:'center',alignSelf:'flex-end',height:20,width:20, borderRadius:10,top:5,right:2}} onPress={()=>console.warn("Cross")}>
                                         <Icon name="close" size={15} color="white" style={{alignSelf:'center'}}/>
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
         paddingBottom:10,
         fontSize: 24,
         lineHeight: 25,
-        fontFamily:'Roboto-Bold'
+        fontFamily:'Roboto-Bold',
     },
     courseBox:{
         flexDirection:'row',
         elevation:10,
-        width: 350,
+        width: '89%',
         height: 93,
         alignItems:'center',
         backgroundColor:'white',
@@ -96,16 +96,14 @@ const styles = StyleSheet.create({
         width: 116,
         height: 84,
         borderRadius:8,
-        // backgroundColor:'red',
         marginLeft:12,
     },
     courseDataBox:{
-        // backgroundColor:'pink',
         height:'100%',
         paddingVertical:25,
     },
     corseData1:{
-    fontSize: 14,
+    fontSize: 13,
     fontFamily:'Roboto-Bold',
     lineHeight: 15,
     marginLeft:12,
@@ -143,7 +141,7 @@ const styles = StyleSheet.create({
     },
     booksData:{
         marginTop:16,
-        fontFamily:'Roboto'
+        fontFamily:'Roboto',
         // backgroundColor:'green'
     },
 })
