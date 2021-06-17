@@ -13,7 +13,7 @@ function CourseData(props) {
     return (
         <View style={{flex:1, backgroundColor:'#C4C4C4'}}>
              <View style={{width:WIDTH, height:220, backgroundColor:'#000'}}>
-                <VideoPlayer video={require('../../assets/videos/Assassins-Creed-Official-Trailer.mp4')} />
+                {/* <VideoPlayer video={require('../../assets/videos/Assassins-Creed-Official-Trailer.mp4')} /> */}
             </View>
             <ScrollView>
             <View style={{paddingHorizontal: 16, flex:1, marginTop: 16}}>

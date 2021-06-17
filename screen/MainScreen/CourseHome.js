@@ -77,7 +77,7 @@ function CourseHome(props) {
     return (
         <View style={{flex:1, backgroundColor:'#C4C4C4'}}>
             <View style={{width:WIDTH, height:220, backgroundColor:'#000'}}>
-                <VideoPlayer video={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')} />
+                {/* <VideoPlayer video={require('../../assets/videos/Need-for-Speed-Heat-Official.mp4')} /> */}
             </View>
             <View style={{padding:16}}>
                 <FlatList 

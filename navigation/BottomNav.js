@@ -6,13 +6,14 @@ import RText from '../components/common/RText'
 import Search from '../screen/MainScreen/Search'
 import { useSelector } from 'react-redux'
 import Books from '../screen/MainScreen/Books'
+import Profile from '../screen/MainScreen/Profile'
+import { BooksHomeStack, ProfileStack } from './CustomStack'
 
 const TapStack = createBottomTabNavigator();
 
 
 
 export const Quiz = () => <View><Text>Quiz</Text></View>
-export const Profile = () => <View><Text>Profile</Text></View>
 
 
 
@@ -27,7 +28,7 @@ function BottomNav() {
         title:'Home',
         imgStyle:{width: 24, height:21},
         image:require('../assets/icons/home.png'),
-        component: swapStore.store==='Books'? Books:Home
+        component: swapStore.store==='Books'? BooksHomeStack:Home
         },
         {
         name:'Search',
@@ -48,7 +49,7 @@ function BottomNav() {
         title:'Profile',
         imgStyle:{width: 20, height:24},
         image:require('../assets/icons/profile.png'),
-        component:Profile
+        component:ProfileStack
         },
     ]
 

@@ -1,14 +1,17 @@
-import React from 'react'
-// import {Text, View} from 'react-native'
+import React, { useState } from 'react';
 import {createStackNavigator} from '@react-navigation/stack'
 
 import BottomNav from './BottomNav'
 import RText from '../components/common/RText'
 import FilterCategory from '../screen/MainScreen/FilterCategory'
 import CourseInfo from '../screen/MainScreen/CourseInfo'
+
+import Profile from '../screen/MainScreen/Profile'
+import PersonalSetting from '../screen/MainScreen/PersonalSetting';
+
 import CourseHome from '../screen/MainScreen/CourseHome'
 import CourseData from '../screen/MainScreen/CourseData'
-import { Text,View,Image,TouchableOpacity } from 'react-native'
+import { Text,View,Image,TouchableOpacity, Switch } from 'react-native'
 // import Books from '../screen/MainScreen/Books'
 import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
@@ -16,16 +19,20 @@ import { useSelector } from 'react-redux'
 import MyCourses from '../screen/MainScreen/MyCourses'
 
 
+
 const Stack = createStackNavigator()
 
 function MainStack() {
+
     const swapStore = useSelector(state => state.swapStore)
+
+    // const [isEnabled, setIsEnabled] = useState(false);
+    // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return (
         <Stack.Navigator initialRouteName="BottomNav">
            <Stack.Screen name='BottomNav' component={BottomNav} 
                 options={{
-                    title:'Books',
-                    headerShown: swapStore.store==="Books"?true:false,
+                    headerShown:false,
                 }}
            />
            <Stack.Screen name='FilterCategory' component={FilterCategory} options={{
@@ -78,6 +85,15 @@ function MainStack() {
            <Stack.Screen name="MyCourses"  component={MyCourses} options={{
                headerTitleStyle:{color:'#950740'}
            }}/>
+            <Stack.Screen 
+                name="PersonalSetting"
+                component={PersonalSetting}
+                options={{
+                    title: 'Personal Setting',
+                    headerTintColor: '#950740'
+                }}
+            />
+
        </Stack.Navigator>
     )
 }
