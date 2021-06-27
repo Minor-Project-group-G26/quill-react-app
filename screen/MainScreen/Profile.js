@@ -19,7 +19,7 @@ function Profile({navigation}) {
         },
         {
             name:"My Courses",
-            onPress: null
+            onPress: ()=> navigation.navigate('MyCourses')
         },
         {
             name:"My Library",

@@ -85,4 +85,4 @@ function Login({navigation, route}) {
     )
 }
 
-export default RootComponent(Login,false) //(component, background(bool))
+export default RootComponent(Login) //(component, background(bool))

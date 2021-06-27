@@ -1,14 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {SaveAsyncData, GetAsyncData, RemoveAsyncData} from './storage'
+import { SaveAsyncData, GetAsyncData, RemoveAsyncData } from './storage'
+
+
+
+
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
-    async(data)=>{
+    async (data) => {
         console.log(data)
         const response = await axios({
-            method:'post',
-            url:'http://192.168.43.216:5000/auth/sign_in',
+            method: 'post',
+            url: 'http://192.168.0.6:5000/auth/sign_in',
             data: data
         })
         // console.log(response);
@@ -17,29 +21,44 @@ export const loginUser = createAsyncThunk(
 )
 export const SignupUser = createAsyncThunk(
     'auth/SignupUser',
-    async(data)=>{
+    async (data) => {
         console.log(data)
         const response = await axios({
-            method:'post',
-            url:'http://192.168.43.216:5000/auth/sign_up',
+            method: 'post',
+            url: 'http://192.168.0.6:5000/auth/sign_up',
             data: data
-        }).catch(err=> console.warn(err))
+        }).catch(err => console.warn(err))
         // console.log(response);
         return response.data;
     }
 )
 export const CheckToken = createAsyncThunk(
     'auth/CheckToken',
-    async()=>{
-        token = await GetAsyncData('@token');
-        // console.log(token);
-        return JSON.parse(token)
+    async (data, {rejectWithValue}) => {
+        let Data = await GetAsyncData('@token');
+        Data = JSON.parse(Data)
+        console.log("========User======")
+        console.log(Data)
+        const response = await axios({
+            method: 'get',
+            url: 'http://192.168.0.6:5000/user',
+            headers:{
+                token: Data.token,
+                'Content-Type':"application/json" 
+            }
+        })
+        const {tokenErr} = response.data;
+        console.log(tokenErr)
+        if(tokenErr)
+        return rejectWithValue(tokenErr)
+        console.log(response.data);
+        return {user: response.data,token:Data.token}
     }
 )
 
 export const ClearToken = createAsyncThunk(
     'auth/ClearToken',
-    async()=>{
+    async () => {
         token = await RemoveAsyncData('@token');
         // console.log(token);
         return (token)
@@ -48,52 +67,62 @@ export const ClearToken = createAsyncThunk(
 
 
 const AuthSlice = createSlice({
-    name:'auth',
+    name: 'auth',
     initialState: {
-        token:null,
-        username:null, 
-        isSaved: false
+        token: null,
+        username: null,
+        isSaved: false,
+        user:null
     },
-    reducers:{
-       
-    }, 
-    extraReducers:{
-        [loginUser.fulfilled]:(state, {payload})=>{
+    reducers: {
+
+    },
+    extraReducers: {
+        [loginUser.fulfilled]: (state, { payload }) => {
             console.log(payload)
             const saved = SaveAsyncData('@token', payload)
-            if(saved){
+            if (saved) {
                 state.isSaved = true;
             }
             console.log(saved, "saved")
             state.token = payload.token;
             state.username = payload.username;
         },
-        [SignupUser.fulfilled]:(state, {payload})=>{
+        [SignupUser.fulfilled]: (state, { payload }) => {
             // console.log(payload);
             const saved = SaveAsyncData('@token', payload);
-            if(saved){
+            if (saved) {
                 state.isSaved = true;
             }
             state.token = payload.token;
             state.username = payload.username;
         },
-        [CheckToken.fulfilled]:(state, {payload})=>{
+        [CheckToken.fulfilled]: (state, { payload }) => {
 
-                if(payload){
-                    state.token = payload.token;
-                    state.username = payload.username;
-                    state.isSaved = true
-                }
-                        
+                state.token = payload.token;
+                state.username = payload.username;
+                state.user = payload.user
+                state.isSaved = true
+
         },
-        [ClearToken.fulfilled]:(state, {payload})=>{
+        [CheckToken.rejected]: (state, { payload }) => {
 
-                
-                    state.token = null;
-                    state.isSaved = false
-                
-                        
+                state.token = null;
+                state.username = null;
+                state.isSaved = false
+
+        },
+        [ClearToken.fulfilled]: (state, { payload }) => {
+
+            state.token = null;
+            state.isSaved = false
         }
+        // [GetUserDetails.rejected]: (state, { payload }) => {
+        //     state.user = null
+        //     state.token = null
+        //     // token = await RemoveAsyncData('@token');
+        //     state.username = null
+        // }
     }
 })
 

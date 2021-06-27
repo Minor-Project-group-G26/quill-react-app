@@ -3,8 +3,7 @@ import { Button, Dimensions, FlatList, ScrollView, SectionList, Text, TouchableO
 import { useDispatch } from 'react-redux';
 import RText from '../../components/common/RText';
 import SearchBar from '../../components/custom/SearchBar';
-import { store } from '../../store';
-import { ClearToken } from '../../store/AuthSlice';
+import { ClearToken, GetUserDetails } from '../../store/AuthSlice';
 import { request } from '../../utils/request'
 import RootComponent from '../RootComponent';
 
@@ -55,6 +54,7 @@ function Home(props) {
     const dispatch = useDispatch()
     const [selectedOption, setSelectedOption] = useState('Popular')
     const HeaderOptionHandler = (text) => setSelectedOption(text)
+    
     return (
         <View style={{ flex: 1 }}>
                 <View style={{ padding: 16  }}></View>

@@ -13,17 +13,18 @@ function NavContoller() {
     const dispatch = useDispatch()
     console.log(token)
     useEffect(() => {
-        
+        if(token === null)
         dispatch(CheckToken())
         
-    }, [isSaved, token])
+    }, [])
     return (<>
 
-            {/* {token === null || false
+            {token === null
             ?(
                 <AuthStack />                
-            ):( */}
+            ):(
                 <DrawerNav /> 
+            )}
         </>
     )
 

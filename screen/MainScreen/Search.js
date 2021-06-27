@@ -51,6 +51,7 @@ const CourseDataList = [
 function Search(props) {
     const [FreeSwitch, setFreeSwitch] = useState(false)
     const [IsDropDown, setIsDropDown] = useState(false)
+    const [DropDownSelect, setDropDownSelect] = useState('Rated')
     return (
         <View style={{flex:1, backgroundColor:'#1A1A1D'}}>
             <View style={{backgroundColor:'#E5E5E5'}}>

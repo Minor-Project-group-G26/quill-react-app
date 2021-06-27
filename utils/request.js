@@ -1,25 +1,28 @@
 import axios from "axios"
 import { useSelector } from "react-redux";
 import { store } from "../store";
+import { GetAsyncData } from "../store/storage";
+import { baseUrl } from "./config";
 
 export const request = async(method='get', url, data=null)=>{
-    const token = store.getState().auth
+    const token = JSON.parse(GetAsyncData('@token')).token
 
     let config = null;
     const headers = {
-        "token": token
+        "token": token, 
+        "Content-Type": "application/json"
     } 
     switch (method.toLowerCase()) {
         case "get":
             config= {
                 method: method,
-                url: "http://192.168.43.216:5000/"+url,
+                url: baseUrl+url,
             }
             break;
         case "post":
             config= {
                 method: method,
-                url: "http://192.168.43.216:5000/"+url,
+                url: baseUrl+url,
                 data: data,
                 headers: headers
             }
