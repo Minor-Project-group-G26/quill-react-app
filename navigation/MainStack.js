@@ -9,7 +9,7 @@ import CourseInfo from '../screen/MainScreen/CourseInfo'
 import CourseHome from '../screen/MainScreen/CourseHome'
 import CourseData from '../screen/MainScreen/CourseData'
 import { Text,View,Image,TouchableOpacity } from 'react-native'
-// import Books from '../screen/MainScreen/Books'
+import PersonalBooks from '../screen/MainScreen/PersonalBooks'
 import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
@@ -72,7 +72,7 @@ function MainStack() {
                     </TouchableOpacity>
                 ),
                 headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/>
-           {/* <Stack.Screen name='Books' component={Books} /> */}
+           <Stack.Screen name='MyLibrary' component={PersonalBooks} />
            <Stack.Screen name="Wishlist" component={Wishlist}/>
        </Stack.Navigator>
     )
