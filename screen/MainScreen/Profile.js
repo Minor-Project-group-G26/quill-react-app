@@ -23,7 +23,7 @@ function Profile({navigation}) {
         },
         {
             name:"My Library",
-            onPress: null
+            onPress: ()=>navigation.navigate('MyLibrary')
         },
         {
             name:"Notification",

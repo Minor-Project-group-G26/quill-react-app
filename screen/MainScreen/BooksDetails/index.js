@@ -8,7 +8,7 @@ import HText from '../../../components/common/HText'
 const wid = Dimensions.get('window').width
 const h = Dimensions.get("window").height 
 
-function BooksDetails() {
+function BooksDetails({navigation}) {
     return(
     <SafeAreaView style={styles.safe}>
             <ScrollView style={{width:wid,height:h}}>
@@ -99,6 +99,7 @@ function BooksDetails() {
                     right:30,
                     bottom:20,
                 }}
+                onPress={()=>navigation.navigate('MyLibrary')}
                 >
                     <Text style={{color:'white',fontSize: 18,fontStyle: 'normal',fontWeight: '700',lineHeight: 21,textAlign: 'center'}}>
                         Buy Now

@@ -13,10 +13,9 @@ function NavContoller() {
     const dispatch = useDispatch()
     console.log(token)
     useEffect(() => {
-        if(token === null)
         dispatch(CheckToken())
         
-    }, [])
+    }, [token])
     return (<>
 
             {token === null
