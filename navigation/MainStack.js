@@ -16,6 +16,7 @@ import { Text,View,Image,TouchableOpacity, Switch } from 'react-native'
 import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
+import CourseHomePage from '../screen/MainScreen/CourseHomePage';
 
 
 
@@ -29,12 +30,37 @@ function MainStack() {
     // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return (
         <Stack.Navigator initialRouteName="BottomNav">
-           <Stack.Screen name='BottomNav' component={BottomNav} 
+            <Stack.Screen 
+                name='CourseHomePage'
+                component={CourseHomePage}
+                options={{
+                    title: '',
+                    headerLeft: () => (
+                        <View style={{ flexDirection: 'row'}}>
+                            <TouchableOpacity activeOpacity={1} style={{paddingLeft: 10, justifyContent:'center'}}>
+                                <Image style={{width:27, height:27}} source={require('../assets/icons/arrow-back.png')} />
+                            </TouchableOpacity>
+                            <View style={{paddingLeft:30}}>
+                                <RText style={{fontFamily: 'Roboto-Black'}}>Design for Human Mind & AI</RText>
+                                <RText style={{fontFamily: 'Roboto-Italic', fontSize:12}}>by Riverside Design Studio</RText>
+                                
+                            </View>
+                        </View>
+                    ),
+                    headerRight: () => (
+                        <View style={{elevation:15,marginRight: 15,backgroundColor:'#fff', height: 36, width: 36, justifyContent: 'center', alignItems:'center', borderRadius:50 }}>
+                        <Image style={{width:22, height:22}} source={require('../assets/icons/wishlist.png')} />
+                        </View>
+                    )
+                }}
+
+            />
+            <Stack.Screen name='BottomNav' component={BottomNav} 
                 options={{
                     headerShown:false,
                 }}
            />
-           <Stack.Screen name='FilterCategory' component={FilterCategory} options={{
+           {/*<Stack.Screen name='FilterCategory' component={FilterCategory} options={{
                title:'Filter Category',
                
            }}/>
@@ -78,9 +104,9 @@ function MainStack() {
                         <Image source={require('../assets/icons/wishlist.png')} style={{height:30,width:30, margin:5}}/>
                     </TouchableOpacity>
                 ),
-                headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/>
+                headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/> */}
            {/* <Stack.Screen name='Books' component={Books} /> */}
-           <Stack.Screen name="Wishlist" component={Wishlist}/>
+           {/* <Stack.Screen name="Wishlist" component={Wishlist}/> */}
 
            {/* <Stack.Screen 
                 name='Profile'

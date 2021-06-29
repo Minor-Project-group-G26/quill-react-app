@@ -7,14 +7,30 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 function PersonalSetting() {
+
+    const [PersonalInfo, setPersonalInfo] = useState({
+        username: 'John Doe',
+        occupation: 'Add Your Occupation',
+        dob:'31-09-1998',
+        phone: '902323598'
+    })
+
+    const UpdatePersonalInfo = () => {
+        console.log('Ok');
+        setPersonalInfo.username
+    }
     return (
         <View style={style.box1}>
             <View style={style.parentHeader}>
                 <View style={style.leftDiv}>
+                    <TouchableOpacity activeOpacity={1} style={{width:'30%'}}>
                     <RText style={style.headerText}>cancel</RText>
+                    </TouchableOpacity>
                 </View>
                 <View style={style.rightDiv}>
+                    <TouchableOpacity activeOpacity={1}>
                     <RText style={style.headerText}>save</RText>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View style={style.AvatarDiv}>
@@ -28,25 +44,25 @@ function PersonalSetting() {
                     <RText style={style.Item1Text}>Username</RText>
                 </View>
                 <View style={style.Item1}>
-                    <TextInput placeholder="type..." style={style.textField} />
+                    <TextInput value={PersonalInfo.username} onChangeText={UpdatePersonalInfo} placeholder="type..." style={style.textField} />
                 </View>
                 <View style={style.TextDiv}>
                     <RText style={style.Item1Text}>Occupation / Profession</RText>
                 </View>
                 <View style={style.Item1}>
-                    <TextInput placeholder="type..." style={style.textField} />
+                    <TextInput value={PersonalInfo.occupation} placeholder="type..." style={style.textField} />
                 </View>
                 <View style={style.TextDiv}>
-                    <RText style={style.Item1Text}>Date of Birth</RText>
+                    <RText style={style.Item1Text}>Date of Birth (dd-mm-yyyy)</RText>
                 </View>
                 <View style={style.Item1}>
-                    <TextInput placeholder="type..." style={style.textField} />
+                    <TextInput value={PersonalInfo.dob} placeholder="type..." style={style.textField} />
                 </View>
                 <View style={style.TextDiv}>
                     <RText style={style.Item1Text}>Phone</RText>
                 </View>
                 <View style={style.Item1}>
-                    <TextInput placeholder="type..." style={style.textField} />
+                    <TextInput value={PersonalInfo.phone} placeholder="type..." style={style.textField} />
                 </View>
             </View>
         </View>
