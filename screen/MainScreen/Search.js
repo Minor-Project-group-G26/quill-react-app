@@ -105,7 +105,7 @@ const CardComponent = (props) => {
                 data={CourseDataList}
                 ItemSeparatorComponent={()=><View style={{height:1, backgroundColor:'#fff'}}></View>}
                 renderItem={({item, index})=>(
-                    <View key={index+"fddfdsfad"} style={{ flexDirection: 'row' , marginVertical:16}}>
+                    <TouchableOpacity onPress={()=>props.navigation.navigate('CourseHomePage')} key={index+"fddfdsfad"} style={{ flexDirection: 'row' , marginVertical:16}}>
                         <View style={{paddingHorizontal: 16}}>
                             <Image source={item.image} style={{ width: 105, height: 75, borderRadius: 10 }} />
                         </View>
@@ -113,7 +113,7 @@ const CardComponent = (props) => {
                             <RText style={{fontFamily: 'Roboto-Bold', fontSize: 16, color: "#fff"}}>{item.title}</RText>
                             <RText style={{fontFamily: 'Roboto-Light', fontSize: 13, color: "#C4C4C4"}}>{item.from}</RText>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 )}
                 keyExtractor={(item,index)=> index+"jdfjhdfsjhd"}
             />

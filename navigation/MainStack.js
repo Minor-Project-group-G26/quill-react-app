@@ -18,6 +18,7 @@ import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
 import MyCourses from '../screen/MainScreen/MyCourses'
+import CourseHomePage from '../screen/MainScreen/CourseHomePage';
 
 
 
@@ -31,7 +32,32 @@ function MainStack() {
     // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return (
         <Stack.Navigator initialRouteName="BottomNav">
-           <Stack.Screen name='BottomNav' component={BottomNav} 
+            <Stack.Screen 
+                name='CourseHomePage'
+                component={CourseHomePage}
+                options={({navigation})=>({
+                    title: '',
+                    headerLeft: () => (
+                        <View style={{ flexDirection: 'row'}}>
+                            <TouchableOpacity onPress={()=> navigation.goBack()}  style={{paddingLeft: 10, justifyContent:'center'}}>
+                                <Image style={{width:27, height:27}} source={require('../assets/icons/arrow-back.png')} />
+                            </TouchableOpacity>
+                            <View style={{paddingLeft:30}}>
+                                <RText style={{fontFamily: 'Roboto-Black'}}>Design for Human Mind & AI</RText>
+                                <RText style={{fontFamily: 'Roboto-Italic', fontSize:12}}>by Riverside Design Studio</RText>
+                                
+                            </View>
+                        </View>
+                    ),
+                    headerRight: () => (
+                        <View style={{elevation:15,marginRight: 15,backgroundColor:'#fff', height: 36, width: 36, justifyContent: 'center', alignItems:'center', borderRadius:50 }}>
+                        <Image style={{width:22, height:22}} source={require('../assets/icons/Wishlist001.png')} />
+                        </View>
+                    )
+                })}
+
+            />
+            <Stack.Screen name='BottomNav' component={BottomNav} 
                 options={{
                     headerShown:false,
                 }}
@@ -86,6 +112,34 @@ function MainStack() {
            <Stack.Screen name="MyCourses"  component={MyCourses} options={{
                headerTitleStyle:{color:'#950740'}
            }}/>
+           {/* <Stack.Screen name='Books' component={Books} /> */}
+           {/* <Stack.Screen name="Wishlist" component={Wishlist}/> */}
+
+           {/* <Stack.Screen 
+                name='Profile'
+                component={Profile}
+                options={{
+                    title: 'Profile',
+                    headerRight: () => (
+                        <View style={{alignItems: 'center',marginRight:10, flexDirection: 'row'}}>
+                            <View style={{paddingRight: 5}}>
+                                <RText style={{fontFamily:'Roboto-Medium'}}>Instructor Mode</RText>
+                            </View>
+                            <View>
+                            <Switch 
+                                trackColor={{ false: "#B2B2B2", true: "#B2B2B2" }}
+                                thumbColor={isEnabled ? "#ffffff" : "#1A1A1D"}
+                                ios_backgroundColor="#3e3e3e"
+                                onValueChange={toggleSwitch}
+                                value={isEnabled}
+                            />
+                            </View>
+                        </View>
+                        
+                    )
+                }}
+            /> */}
+
             <Stack.Screen 
                 name="PersonalSetting"
                 component={PersonalSetting}

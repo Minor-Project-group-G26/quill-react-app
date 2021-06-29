@@ -72,7 +72,7 @@ const AuthSlice = createSlice({
         token: null,
         username: null,
         isSaved: false,
-        user:{username: "", email: "", name: "", verification: false, 
+        user:{username: "", email: "", name: "", verification: false, dob:"", occupation:"",
             instructor:false, profile:null,  block_data: false,
             enrollments: {
               ongoing: 0,

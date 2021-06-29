@@ -114,7 +114,7 @@ const TopHorizontalComponent = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=> props.navigation.navigate('CourseHome')}>
+                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=> props.navigation.navigate('CourseHomePage')}>
                         <View><Image source={item.image} style={{ width: 200, height: 120, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 185 }}>
                             <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 16, color: "#fff",height: 40, overflow:"hidden" }}>{textHandler(item.title)} </RText>
@@ -138,7 +138,7 @@ const LastActivityComponent = (props) => {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=>props.navigation.navigate('CourseInfo')}>
+                    <TouchableOpacity style={{ paddingHorizontal: 16 }} onPress={()=>props.navigation.navigate('CourseHomePage')}>
                         <View><Image source={item.image} style={{ width: 145, height: 90, borderRadius: 15 }} /></View>
                         <View style={{ marginVertical: 16, width: 135 }}>
                             <RText style={{ fontFamily: 'Roboto-Bold', fontSize: 14, color: "#fff", height: 35, overflow:"hidden" }}>{textHandler(item.title)} </RText>
@@ -157,7 +157,7 @@ const YouMightLikeComponent = (props) => {
     return (
         <View>
             {CourseDataList.map((item, index) => (
-                <View key={index+"fddfdsfad"} style={{ flexDirection: 'row' , marginVertical:16}}>
+                <TouchableOpacity onPress={()=>props.navigation.navigate('CourseHomePage')} key={index+"fddfdsfad"} style={{ flexDirection: 'row' , marginVertical:16}}>
                     <View style={{paddingHorizontal: 16}}>
                         <Image source={item.image} style={{ width: 100, height: 65, borderRadius: 10 }} />
                     </View>
@@ -168,7 +168,7 @@ const YouMightLikeComponent = (props) => {
                     <View style={{width: 50, justifyContent:'flex-end'}}>
                         <RText style={{fontFamily: 'Roboto-Light', fontSize: 12, color: "#C4C4C4"}}>$399</RText>
                     </View>
-                </View>
+                </TouchableOpacity>
             ))}
 
         </View>

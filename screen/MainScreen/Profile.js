@@ -1,17 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView } from 'react-native';
 import RootComponent from '../RootComponent';
 import RText from '../../components/common/RText';
 import AText from '../../components/common/AText';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { baseUrl } from '../../utils/config';
+import { ClearToken } from '../../store/AuthSlice';
 
 
 function Profile({navigation}) {
 
+    const [Invisible, setInvisible] = useState(-1)
+    const {user, auth} = useSelector(state => state)
+    const UserDetail = auth.user
+    const [ThemeColor, setThemeColor] = useState({
+        backgroundColor:'#C3073F',
+        textColor: '#000',
+        crateColor:'#4E4E50',
+        lol:'Hi'
+    })
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if(user.instructorMode){
+            setThemeColor({
+                ...ThemeColor,
+                backgroundColor: '#1A1A1D',
+                textColor: '#fff',
+                crateColor:'#C3073F',
+                lol:'Instructor'
+            })
+        }
+        else{
+            setThemeColor({
+                ...ThemeColor,
+                backgroundColor: '#C3073F',
+                textColor: '#000',
+                crateColor: '#4E4E50',
+                lol:'Hi'
+            })
+        }
+        
+    },[user])
+
     const options = [
         {
             name:"Personal Setting",
-            onPress: () => navigation.navigate('PersonalSetting')
+            onPress: () => navigation.navigate('PersonalSetting', {user: UserDetail})
         },
         {
             name:"Manage Password",
@@ -39,7 +74,7 @@ function Profile({navigation}) {
         },
         {
             name:"Wishlist",
-            onPress: null
+            onPress: ()=>navigation.navigate('Wishlist')
         },
         {
             name:"About Us",
@@ -47,15 +82,24 @@ function Profile({navigation}) {
         },
         {
             name:"Log out",
-            onPress: null
+            onPress=()=>dispatch(ClearToken())
         },
     ]
+
+    ShowAlertWithDelay=()=>{
+        
+    }
 
     const [swapColor, setswapColor] = useState(-1)
 
     const ChangeColor = (index) => {
         setswapColor(index)
+        setInvisible(index)
+        setTimeout(function(){
+            setInvisible(-1) 
+        }, 2000);
     }
+
 
     const renderOptions = options.map((item, index) => (
         <TouchableOpacity 
@@ -64,21 +108,21 @@ function Profile({navigation}) {
                 item.onPress()
             }}
             key={index} 
-            style={[style.crate, swapColor === index? style.swap: {}]}
+            style={[style.crate, (swapColor === index)&& (Invisible === index)? {backgroundColor:ThemeColor.crateColor}: {}]}
         >
             <RText style={style.crateText}>{item.name}</RText>
         </TouchableOpacity>
     ))
 
     return (
-        <View style={style.box1}>
+        <View style={{...style.box1, backgroundColor:ThemeColor.backgroundColor}}>
             <ScrollView>
                 <View style={style.header}>
                     <View style={style.headerLeft}>
-                        <Image style={style.Avatar} source={require('../../assets/icons/instructor_img.png')} />
+                        <Image style={style.Avatar} source={UserDetail.profile==null?require('../../assets/images/userSample.jpeg'):{uri: baseUrl+'file/img/user/'+auth.user.profile }} />
                     </View>
                     <View style={style.headerRight}>
-                        <AText style={style.headerText}>Hi, John Doe</AText>
+                        <AText style={{...style.headerText, color:ThemeColor.textColor}}>{ThemeColor.lol}, {UserDetail.name}</AText>
                     </View>
                 </View>
                 <View style={style.line}></View>
@@ -99,7 +143,8 @@ const style = StyleSheet.create({
     },
     Avatar: {
         width: 65,
-        height: 65
+        height: 65,
+        borderRadius: 65/2
     },
     header: {
         // backgroundColor: '#fff',
@@ -109,7 +154,7 @@ const style = StyleSheet.create({
     },
     headerText: {
         fontFamily: 'Arial-Bold-Italic',
-        fontSize: 19
+        fontSize: 19,
     },
     headerLeft: {
         alignItems: 'flex-end',
@@ -118,10 +163,11 @@ const style = StyleSheet.create({
         // backgroundColor: 'green',
     },
     headerRight: {
+
         width: '70%',
         // backgroundColor: 'pink',
         justifyContent: 'center',
-        paddingLeft: 25
+        paddingHorizontal: 25
     },
     box2: {
         marginTop: 12,
@@ -134,9 +180,6 @@ const style = StyleSheet.create({
     crateText: {
         fontFamily: 'Roboto-Medium',
         color: '#fff'
-    },
-    swap: {
-        backgroundColor: '#4E4E50'
     },
     line: {
         height: 0.4,
