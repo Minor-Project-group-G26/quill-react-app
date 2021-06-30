@@ -17,6 +17,11 @@ import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
 import CourseHomePage from '../screen/MainScreen/CourseHomePage';
+import ManagePassword from '../screen/MainScreen/ManagePassword';
+import AdminVerifyUser from '../screen/MainScreen/AdminVerifyUser';
+import AdminVerifyInstructor from '../screen/MainScreen/AdminVerifyInstructor';
+import AdminVerifyBook from '../screen/MainScreen/AdminVerifyBook';
+import AdminVerifyCourse from '../screen/MainScreen/AdminVerifyCourse';
 
 
 
@@ -43,7 +48,6 @@ function MainStack() {
                             <View style={{paddingLeft:30}}>
                                 <RText style={{fontFamily: 'Roboto-Black'}}>Design for Human Mind & AI</RText>
                                 <RText style={{fontFamily: 'Roboto-Italic', fontSize:12}}>by Riverside Design Studio</RText>
-                                
                             </View>
                         </View>
                     ),
@@ -60,6 +64,58 @@ function MainStack() {
                     headerShown:false,
                 }}
            />
+           <Stack.Screen 
+                name='ManagePassword' 
+                component={ManagePassword}
+                options={{
+                    title: 'Manage Password',
+                    headerTintColor: '#950740'
+                }}
+           />
+           <Stack.Screen
+                name='AdminVerifyUser'
+                component={AdminVerifyUser}
+                options={{
+                    title:'User Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyInstructor'
+                component={AdminVerifyInstructor}
+                options={{
+                    title:'Instructor Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyBook'
+                component={AdminVerifyBook}
+                options={{
+                    title:'Book Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyCourse'
+                component={AdminVerifyCourse}
+                options={{
+                    title:'Course Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
            {/*<Stack.Screen name='FilterCategory' component={FilterCategory} options={{
                title:'Filter Category',
                

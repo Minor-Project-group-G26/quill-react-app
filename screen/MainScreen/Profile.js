@@ -46,7 +46,7 @@ function Profile({navigation}) {
         },
         {
             name:"Manage Password",
-            onPress: null
+            onPress: () => navigation.navigate('ManagePassword')
         },
         {
             name:"My Courses",
@@ -70,15 +70,19 @@ function Profile({navigation}) {
         },
         {
             name:"Wishlist",
-            onPress: null
+            onPress: () => navigation.navigate('AdminVerifyBook')
         },
         {
             name:"About Us",
-            onPress: null
+            onPress: () => navigation.navigate('AdminVerifyCourse')
+        },
+        {
+            name:"Apply for Instructor",
+            onPress: () => navigation.navigate('AdminVerifyUser')
         },
         {
             name:"Log out",
-            onPress: null
+            onPress: () => navigation.navigate('AdminVerifyInstructor')
         },
     ]
 

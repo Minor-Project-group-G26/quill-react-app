@@ -6,7 +6,7 @@ import RText from '../../components/common/RText';
 import { TextInput } from 'react-native-gesture-handler';
 
 
-function PersonalSetting() {
+function ManagePassword() {
 
     const [PersonalInfo, setPersonalInfo] = useState({
         username: 'John Doe',
@@ -33,43 +33,31 @@ function PersonalSetting() {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={style.AvatarDiv}>
-                <Image style={style.Avatar} source={require('../../assets/icons/instructor_img.png')} />                
-            </View>
-            <View style={style.rightDivCam}>
-                <Image style={style.CameraIcon} source={require('../../assets/icons/camera_icon.png')} />
-            </View>
             <View style={style.Form}>
                 <View style={style.TextDiv}>
-                    <RText style={style.Item1Text}>Username</RText>
+                    <RText style={style.Item1Text}>Current Password</RText>
                 </View>
                 <View style={style.Item1}>
                     <TextInput value={PersonalInfo.username} onChangeText={UpdatePersonalInfo} placeholder="type..." style={style.textField} />
                 </View>
                 <View style={style.TextDiv}>
-                    <RText style={style.Item1Text}>Occupation / Profession</RText>
+                    <RText style={style.Item1Text}>New Password</RText>
                 </View>
                 <View style={style.Item1}>
                     <TextInput value={PersonalInfo.occupation} placeholder="type..." style={style.textField} />
                 </View>
                 <View style={style.TextDiv}>
-                    <RText style={style.Item1Text}>Date of Birth (dd-mm-yyyy)</RText>
+                    <RText style={style.Item1Text}>Confirm Password</RText>
                 </View>
                 <View style={style.Item1}>
                     <TextInput value={PersonalInfo.dob} placeholder="type..." style={style.textField} />
-                </View>
-                <View style={style.TextDiv}>
-                    <RText style={style.Item1Text}>Phone</RText>
-                </View>
-                <View style={style.Item1}>
-                    <TextInput value={PersonalInfo.phone} placeholder="type..." style={style.textField} />
                 </View>
             </View>
         </View>
     )
 }
 
-export default RootComponent(PersonalSetting, false)
+export default RootComponent(ManagePassword, false)
 
 const style = StyleSheet.create({
     box1: {
@@ -116,7 +104,7 @@ const style = StyleSheet.create({
     },
     Form: {
         // backgroundColor: 'lime',
-        marginTop: 30
+        marginTop: 130
     },
     Item1: {
         alignItems: 'center'
