@@ -50,7 +50,7 @@ function Profile({navigation}) {
         },
         {
             name:"Manage Password",
-            onPress: null
+            onPress: () => navigation.navigate('ManagePassword')
         },
         {
             name:"My Courses",
@@ -78,7 +78,11 @@ function Profile({navigation}) {
         },
         {
             name:"About Us",
-            onPress: null
+            onPress: () => navigation.navigate('AdminVerifyCourse')
+        },
+        {
+            name:"Apply for Instructor",
+            onPress: () => navigation.navigate('AdminVerifyUser')
         },
         {
             name:"Log out",

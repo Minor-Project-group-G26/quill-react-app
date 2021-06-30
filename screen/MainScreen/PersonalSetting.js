@@ -106,12 +106,12 @@ function PersonalSetting(props) {
             <View style={style.parentHeader}>
                 <View style={style.leftDiv}>
                     <TouchableOpacity activeOpacity={1} style={{width:'30%'}}>
-                    <RText style={style.headerText} onPress={ResetPersonalInfoHandler}>cancel</RText>
+                    <RText style={{fontFamily: 'Roboto-Medium'}} onPress={ResetPersonalInfoHandler}>cancel</RText>
                     </TouchableOpacity>
                 </View>
                 <View style={style.rightDiv}>
                     <TouchableOpacity activeOpacity={1}>
-                    <RText onPress={ProfileInfoUpdateHandler} style={style.headerText}>save</RText>
+                    <RText style={{fontFamily: 'Roboto-Medium', color:'#950740'}} onPress={UpdateUserProfile}>save</RText>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -172,9 +172,6 @@ const style = StyleSheet.create({
         width: '50%',
         // backgroundColor: 'lime',
         alignItems: 'flex-end'
-    },
-    headerText: {
-        fontFamily: 'Roboto-Medium'
     },
     AvatarDiv: {
         alignItems:'center',

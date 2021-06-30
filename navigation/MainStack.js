@@ -20,6 +20,11 @@ import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
 import MyCourses from '../screen/MainScreen/MyCourses'
 import CourseHomePage from '../screen/MainScreen/CourseHomePage';
+import ManagePassword from '../screen/MainScreen/ManagePassword';
+import AdminVerifyUser from '../screen/MainScreen/AdminVerifyUser';
+import AdminVerifyInstructor from '../screen/MainScreen/AdminVerifyInstructor';
+import AdminVerifyBook from '../screen/MainScreen/AdminVerifyBook';
+import AdminVerifyCourse from '../screen/MainScreen/AdminVerifyCourse';
 
 
 
@@ -46,7 +51,6 @@ function MainStack() {
                             <View style={{paddingLeft:30}}>
                                 <RText style={{fontFamily: 'Roboto-Black'}}>Design for Human Mind & AI</RText>
                                 <RText style={{fontFamily: 'Roboto-Italic', fontSize:12}}>by Riverside Design Studio</RText>
-                                
                             </View>
                         </View>
                     ),
@@ -64,6 +68,58 @@ function MainStack() {
                 }}
            />
 
+           <Stack.Screen 
+                name='ManagePassword' 
+                component={ManagePassword}
+                options={{
+                    title: 'Manage Password',
+                    headerTintColor: '#950740'
+                }}
+           />
+           <Stack.Screen
+                name='AdminVerifyUser'
+                component={AdminVerifyUser}
+                options={{
+                    title:'User Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyInstructor'
+                component={AdminVerifyInstructor}
+                options={{
+                    title:'Instructor Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyBook'
+                component={AdminVerifyBook}
+                options={{
+                    title:'Book Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
+           <Stack.Screen
+                name='AdminVerifyCourse'
+                component={AdminVerifyCourse}
+                options={{
+                    title:'Course Action',
+                    headerStyle: {
+                        backgroundColor:'#C3073F',
+                    },
+                    headerTintColor:'#fff'
+                }}
+            />
            <Stack.Screen name='FilterCategory' component={FilterCategory} options={{
                title:'Filter Category',
                
@@ -114,34 +170,10 @@ function MainStack() {
            <Stack.Screen name="MyCourses"  component={MyCourses} options={{
                headerTitleStyle:{color:'#950740'}
            }}/>
-           {/* <Stack.Screen name='Books' component={Books} /> */}
-           {/* <Stack.Screen name="Wishlist" component={Wishlist}/> */}
+           <Stack.Screen name='Books' component={Books} />
+            <Stack.Screen name="Wishlist" component={Wishlist}/>
 
-           {/* <Stack.Screen 
-                name='Profile'
-                component={Profile}
-                options={{
-                    title: 'Profile',
-                    headerRight: () => (
-                        <View style={{alignItems: 'center',marginRight:10, flexDirection: 'row'}}>
-                            <View style={{paddingRight: 5}}>
-                                <RText style={{fontFamily:'Roboto-Medium'}}>Instructor Mode</RText>
-                            </View>
-                            <View>
-                            <Switch 
-                                trackColor={{ false: "#B2B2B2", true: "#B2B2B2" }}
-                                thumbColor={isEnabled ? "#ffffff" : "#1A1A1D"}
-                                ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
-                            />
-                            </View>
-                        </View>
-                        
-                    )
-                }}
-            /> */}
-
+           
             <Stack.Screen 
                 name="PersonalSetting"
                 component={PersonalSetting}
