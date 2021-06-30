@@ -62,7 +62,7 @@ function Profile({navigation}) {
         },
         {
             name:"Notification",
-            onPress: null
+            onPress:  ()=>navigation.navigate('Notification')
         },
         {
             name:"Achievements",
@@ -82,13 +82,9 @@ function Profile({navigation}) {
         },
         {
             name:"Log out",
-            onPress=()=>dispatch(ClearToken())
+            onPress:()=>dispatch(ClearToken())
         },
     ]
-
-    ShowAlertWithDelay=()=>{
-        
-    }
 
     const [swapColor, setswapColor] = useState(-1)
 
@@ -98,6 +94,10 @@ function Profile({navigation}) {
         setTimeout(function(){
             setInvisible(-1) 
         }, 2000);
+    }
+
+    const ShowAlertWithDelay = ()=>{
+
     }
 
 

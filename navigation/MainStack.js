@@ -5,6 +5,7 @@ import BottomNav from './BottomNav'
 import RText from '../components/common/RText'
 import FilterCategory from '../screen/MainScreen/FilterCategory'
 import CourseInfo from '../screen/MainScreen/CourseInfo'
+import NotificationPage from '../screen/MainScreen/NotificationPage'
 
 import Profile from '../screen/MainScreen/Profile'
 import PersonalSetting from '../screen/MainScreen/PersonalSetting';
@@ -62,6 +63,7 @@ function MainStack() {
                     headerShown:false,
                 }}
            />
+
            <Stack.Screen name='FilterCategory' component={FilterCategory} options={{
                title:'Filter Category',
                
@@ -149,6 +151,12 @@ function MainStack() {
                 }}
             />
 
+           <Stack.Screen name='Notification' component={NotificationPage} 
+           options={{
+               title: "Notification", 
+               headerTitleStyle: {color: '#950740'}
+           }}
+           />
        </Stack.Navigator>
     )
 }
