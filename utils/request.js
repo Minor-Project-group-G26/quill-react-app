@@ -1,12 +1,12 @@
 import axios from "axios"
-import { useSelector } from "react-redux";
-import { store } from "../store";
 import { GetAsyncData } from "../store/storage";
 import { baseUrl } from "./config";
 
-export const request = async(method='get', url, data=null)=>{
-    const token = JSON.parse(GetAsyncData('@token')).token
-
+export const request = async(method, url, data=null)=>{
+    let Data = await GetAsyncData('@token');
+    console.log("Request Token", Data)
+    let {token}= JSON.parse(Data);  
+    console.log(token)
     let config = null;
     const headers = {
         "token": token, 
@@ -19,20 +19,31 @@ export const request = async(method='get', url, data=null)=>{
                 url: baseUrl+url,
             }
             break;
-        case "post":
+        case "upload":
+            headers["Content-Type"]='multipart/form-data'
+            config= {
+                method: 'put',
+                url: baseUrl+url,
+                data: data,
+                headers:headers
+            }
+            
+            break;
+        
+        default:
             config= {
                 method: method,
                 url: baseUrl+url,
                 data: data,
                 headers: headers
             }
-        default:
             break;
     }
     console.log(method, " : ", config.url)
     console.log("token: ", token)
-    // const result = await axios(config);
-    // console.log(result.data);
-    // return result
-    return token
+    const result = await axios(config);
+    console.log(result.data);
+    return result
+    
+    // return token
 }

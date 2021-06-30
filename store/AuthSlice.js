@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { request } from '../utils/request'
 import { SaveAsyncData, GetAsyncData, RemoveAsyncData } from './storage'
 
 
@@ -29,6 +30,38 @@ export const SignupUser = createAsyncThunk(
             data: data
         }).catch(err => console.warn(err))
         // console.log(response);
+        return response.data;
+    }
+)
+export const UpdateUser = createAsyncThunk(
+    'auth/UpdateUser',
+    async (data,{rejectWithValue}) => {
+        console.log(data)
+        const response = await request(
+            'put',
+            'user/update',
+             data
+        ).catch(err => console.warn(err))
+        console.log(response.data)
+        if(response===null)
+        return {}
+        console.log(response.data);
+        return data;
+    }
+)
+export const UpdateUserProfile = createAsyncThunk(
+    'auth/UpdateUserProfile',
+    async (data,{rejectWithValue}) => {
+        console.log(data)
+        const response = await request(
+            'upload',
+            'user/update_image',
+             data
+        ).catch(err => console.warn(err))
+        console.log(response.data)
+        if(response===null)
+        return {}
+        console.log(response.data);
         return response.data;
     }
 )
@@ -73,7 +106,7 @@ const AuthSlice = createSlice({
         username: null,
         isSaved: false,
         user:{username: "", email: "", name: "", verification: false, dob:"", occupation:"",
-            instructor:false, profile:null,  block_data: false,
+            instructor:false, profile:null,  block_data: false,phone:"",
             enrollments: {
               ongoing: 0,
               completed: 0}
@@ -101,6 +134,15 @@ const AuthSlice = createSlice({
             }
             state.token = payload.token;
             state.username = payload.username;
+        },
+        [UpdateUser.fulfilled]: (state, { payload }) => {
+            console.log("Payload", payload);
+            state.user = {...state.user, ...payload}
+        },
+        [UpdateUserProfile.fulfilled]: (state, { payload }) => {
+            console.log(payload);
+            state.user.profile = payload.filename
+            // state.user = {...state.user, payload}
         },
         [CheckToken.fulfilled]: (state, { payload }) => {
 
