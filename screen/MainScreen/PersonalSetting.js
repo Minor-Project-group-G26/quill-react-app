@@ -22,7 +22,7 @@ function PersonalSetting(props) {
     const dispatch = useDispatch();
     const UpdatePersonalInfo = (option, text) => {
         console.log('Ok');
-        console.log(PersonalInfo)
+        // console.log(PersonalInfo)
         switch (option) {
             case "occupation":
                 setPersonalInfo({
@@ -105,13 +105,13 @@ function PersonalSetting(props) {
         <View style={style.box1}>
             <View style={style.parentHeader}>
                 <View style={style.leftDiv}>
-                    <TouchableOpacity activeOpacity={1} style={{width:'30%'}}>
-                    <RText style={{fontFamily: 'Roboto-Medium'}} onPress={ResetPersonalInfoHandler}>cancel</RText>
+                    <TouchableOpacity onPress={ResetPersonalInfoHandler} style={{width:'30%'}}>
+                    <RText style={{fontFamily: 'Roboto-Medium'}} >cancel</RText>
                     </TouchableOpacity>
                 </View>
                 <View style={style.rightDiv}>
-                    <TouchableOpacity activeOpacity={1}>
-                    <RText style={{fontFamily: 'Roboto-Medium', color:'#950740'}} onPress={UpdateUserProfile}>save</RText>
+                    <TouchableOpacity  onPress={ProfileInfoUpdateHandler}>
+                    <RText style={{fontFamily: 'Roboto-Medium', color:'#950740'}}>save</RText>
                     </TouchableOpacity>
                 </View>
             </View>

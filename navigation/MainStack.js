@@ -170,8 +170,6 @@ function MainStack() {
            <Stack.Screen name="MyCourses"  component={MyCourses} options={{
                headerTitleStyle:{color:'#950740'}
            }}/>
-           <Stack.Screen name='Books' component={Books} />
-            <Stack.Screen name="Wishlist" component={Wishlist}/>
 
            
             <Stack.Screen 
