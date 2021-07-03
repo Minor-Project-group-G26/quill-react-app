@@ -17,6 +17,8 @@ export const request = async(method, url, data=null)=>{
             config= {
                 method: method,
                 url: baseUrl+url,
+                headers:headers
+
             }
             break;
         case "upload":

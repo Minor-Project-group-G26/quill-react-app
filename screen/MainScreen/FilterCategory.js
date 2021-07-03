@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import RootComponent from '../RootComponent';
 import HText from '../../components/common/HText';
 import RText from '../../components/common/RText';
+import { request } from '../../utils/request';
 
 
 const Category = [
@@ -20,19 +21,30 @@ function FilterCategory() {
 
     const [swapColor, setswapColor] = useState(-1)
     const [dataIndex, setdataIndex] = useState(-1)
-    
+    const [CategoryList, setCategoryList] = useState([])
+
+    const FetchCategory = async()=>{
+        const res = await request('get','category_list')
+        console.log(res.data)
+        setCategoryList(res.data.data)
+    }
+    useEffect(() => {
+        FetchCategory()
+    }, [])
+
     const ChangeStyle = (index) => {
         setswapColor(index === swapColor ? null : index)
         setdataIndex(index)
+        
     }
 
-    const CategoryTemplate = Category.map((item,index) => (
+    const CategoryTemplate = CategoryList.map((item,index) => (
     <View
         key={index}
         style={[style.capsuleBro, swapColor === index ?style.swap: {}]}
     >
         <TouchableOpacity onPress={() => ChangeStyle(index)} style={{borderRadius:50 , width: '100%', height:'100%', alignItems:'center',justifyContent:'center'}}>
-            <RText onPress={() => ChangeStyle(index)} style={style.textColor}>{item}</RText>
+            <RText onPress={() => ChangeStyle(index)} style={style.textColor}>{item.name}</RText>
         </TouchableOpacity>
     </View>
     ))
