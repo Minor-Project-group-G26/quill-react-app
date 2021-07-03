@@ -50,15 +50,15 @@ function Profile({navigation}) {
         },
         {
             name:"My Courses",
-            onPress: null
+            onPress: ()=> navigation.navigate('MyCourses')
         },
         {
             name:"My Library",
-            onPress: null
+            onPress: ()=>navigation.navigate('MyLibrary')
         },
         {
             name:"Notification",
-            onPress: null
+            onPress: ()=>navigation.navigate('Notification')
         },
         {
             name:"Achievements",
@@ -70,7 +70,7 @@ function Profile({navigation}) {
         },
         {
             name:"Wishlist",
-            onPress: () => navigation.navigate('AdminVerifyBook')
+            onPress: ()=>navigation.navigate('Wishlist')
         },
         {
             name:"About Us",

@@ -22,6 +22,7 @@ import AdminVerifyUser from '../screen/MainScreen/AdminVerifyUser';
 import AdminVerifyInstructor from '../screen/MainScreen/AdminVerifyInstructor';
 import AdminVerifyBook from '../screen/MainScreen/AdminVerifyBook';
 import AdminVerifyCourse from '../screen/MainScreen/AdminVerifyCourse';
+import AddCourse from '../screen/MainScreen/AddCourse';
 
 
 
@@ -114,6 +115,13 @@ function MainStack() {
                         backgroundColor:'#C3073F',
                     },
                     headerTintColor:'#fff'
+                }}
+            />
+            <Stack.Screen 
+                name='AddCourse'
+                component={AddCourse}
+                options={{
+                    title:'Add Course',
                 }}
             />
            {/*<Stack.Screen name='FilterCategory' component={FilterCategory} options={{
