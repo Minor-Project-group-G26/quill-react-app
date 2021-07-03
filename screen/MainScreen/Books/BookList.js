@@ -3,6 +3,7 @@ import React from 'react'
 import { SafeAreaView, View, TouchableOpacity, Image, Text, Dimensions, StyleSheet,FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import TitleText from './TitleText';
+import AText from '../../../components/common/AText';
 
 
 const HEIGHT = Dimensions.get("window").height
@@ -15,29 +16,29 @@ function BookList(props) {
                 style={{ flex:1,width:WIDTH*0.9}}
                 data={props.data}
                 showsVerticalScrollIndicator={false}
-                keyExtractor={(item) => (item.id)}
+                keyExtractor={(item,z) => "key"+z}
                 renderItem={({ item }) => (
                     <View  style={{flexDirection:'row', marginTop:40}}>
                         {item.map((item,index) => {       
                                 return (
-                                    <TouchableOpacity key={item.id} style={styles.card}  onPress={()=>navigation.navigate('BooksDetails',{headerTitle: item.title, data: item})}>
+                                    <TouchableOpacity key={index} style={styles.card}  onPress={()=>navigation.navigate('BooksDetails',{headerTitle: item.title, data: item})}>
                                         <Image source={item.image} style={styles.cardImage} />
                                         <View style={styles.cardTextContainer}>
                                             <TitleText data={item.title}/>
                                             <View style={styles.cardDetailView}>
                                                 <View style={{ flexDirection: 'row',justifyContent:'space-between', alignItems:'center' }}>
                                                     <View style={{ flexDirection: 'row',}}>
-                                                        <Text >
+                                                        <AText >
                                                             {item.Rating}
-                                                        </Text>
+                                                        </AText>
                                                         <View style={{top:2,marginLeft:5 }}>
                                                             <Icon name="star" size={15} color="yellow" />
                                                         </View>
                                                     </View>
                                                     <View style={{marginRight:5}}>
-                                                        <Text >
+                                                        <AText >
                                                             {item.Price}
-                                                        </Text>
+                                                        </AText>
                                                     </View>
                                                 </View>
                                             </View>

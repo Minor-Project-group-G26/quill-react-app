@@ -8,7 +8,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const h = Dimensions.get('window').height
 const w = Dimensions.get('window').width
 
-function CourseHomePage() {
+function CourseHomePage(props) {
+
+    const BuyHandler = ()=> props.navigation.navigate('CourseHome')
     return (
         <View style={{flex:1}}>
             <View style={style.header}>
@@ -105,9 +107,9 @@ function CourseHomePage() {
                         <View style={{ width:'30%', justifyContent:'center', alignItems:'center', paddingRight:20}}>
                             <RText style={{fontFamily:'Roboto-Medium', fontSize:20}}>₹ 378</RText>
                         </View>
-                        <View style={style.BuyNowDiv}>
+                        <TouchableOpacity onPress={BuyHandler} style={style.BuyNowDiv}>
                             <RText style={{fontFamily:'Roboto-Medium', fontSize:20, color:'#fff'}}>Buy Now</RText>
-                        </View>
+                        </TouchableOpacity>
                     </View>
             </View>
         </View>

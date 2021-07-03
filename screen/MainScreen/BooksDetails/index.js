@@ -8,7 +8,7 @@ import HText from '../../../components/common/HText'
 const wid = Dimensions.get('window').width
 const h = Dimensions.get("window").height 
 
-function BooksDetails() {
+function BooksDetails({navigation}) {
     return(
     <SafeAreaView style={styles.safe}>
             <ScrollView style={{width:wid,height:h}}>
@@ -54,9 +54,9 @@ function BooksDetails() {
                             <Rating/>
                             </View>
                         </View>
-                        <View style={{position:'relative', height:95, width:290,marginHorizontal:45}}>
+                        <View style={{position:'relative', height:95, width:290,marginHorizontal:45,backgroundColor:'white',borderRadius: 6,}}>
                                 <TextInput
-                                style={{borderRadius: 6,width:'100%',height:'100%' ,backgroundColor:'white',textAlignVertical:'top', padding: 10}}
+                                style={{width:'91%',height:'100%' ,textAlignVertical:'top', padding: 10}}
                                 multiline={true}
                                 // numberOfLines={4}
                                 placeholder={"Write Your View "}  
@@ -99,6 +99,7 @@ function BooksDetails() {
                     right:30,
                     bottom:20,
                 }}
+                onPress={()=>navigation.navigate('MyLibrary')}
                 >
                     <Text style={{color:'white',fontSize: 18,fontStyle: 'normal',fontWeight: '700',lineHeight: 21,textAlign: 'center'}}>
                         Buy Now
@@ -196,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft:39
     },
     SendCircle:{
-        backgroundColor:"#4EE278", justifyContent:'center',width: 30,height: 30,borderRadius:15, position:'absolute',bottom:5,right:10
+        backgroundColor:"#4EE278", justifyContent:'center',width: 30,height: 30,borderRadius:15, position:'absolute',alignSelf:'flex-end',bottom:7,right:5
     },
     Tell:{
     fontStyle: 'italic',

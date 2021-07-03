@@ -5,17 +5,20 @@ import BottomNav from './BottomNav'
 import RText from '../components/common/RText'
 import FilterCategory from '../screen/MainScreen/FilterCategory'
 import CourseInfo from '../screen/MainScreen/CourseInfo'
+import NotificationPage from '../screen/MainScreen/NotificationPage'
 
-import Profile from '../screen/MainScreen/Profile'
+// import Profile from '../screen/MainScreen/Profile'
 import PersonalSetting from '../screen/MainScreen/PersonalSetting';
 
 import CourseHome from '../screen/MainScreen/CourseHome'
 import CourseData from '../screen/MainScreen/CourseData'
 import { Text,View,Image,TouchableOpacity, Switch } from 'react-native'
 // import Books from '../screen/MainScreen/Books'
+import PersonalBooks from '../screen/MainScreen/PersonalBooks'
 import BooksDetails from '../screen/MainScreen/BooksDetails'
 import Wishlist from '../screen/MainScreen/Wishlist'
 import { useSelector } from 'react-redux'
+import MyCourses from '../screen/MainScreen/MyCourses'
 import CourseHomePage from '../screen/MainScreen/CourseHomePage';
 import ManagePassword from '../screen/MainScreen/ManagePassword';
 import AdminVerifyUser from '../screen/MainScreen/AdminVerifyUser';
@@ -39,11 +42,11 @@ function MainStack() {
             <Stack.Screen 
                 name='CourseHomePage'
                 component={CourseHomePage}
-                options={{
+                options={({navigation})=>({
                     title: '',
                     headerLeft: () => (
                         <View style={{ flexDirection: 'row'}}>
-                            <TouchableOpacity activeOpacity={1} style={{paddingLeft: 10, justifyContent:'center'}}>
+                            <TouchableOpacity onPress={()=> navigation.goBack()}  style={{paddingLeft: 10, justifyContent:'center'}}>
                                 <Image style={{width:27, height:27}} source={require('../assets/icons/arrow-back.png')} />
                             </TouchableOpacity>
                             <View style={{paddingLeft:30}}>
@@ -54,10 +57,10 @@ function MainStack() {
                     ),
                     headerRight: () => (
                         <View style={{elevation:15,marginRight: 15,backgroundColor:'#fff', height: 36, width: 36, justifyContent: 'center', alignItems:'center', borderRadius:50 }}>
-                        <Image style={{width:22, height:22}} source={require('../assets/icons/wishlist.png')} />
+                        <Image style={{width:22, height:22}} source={require('../assets/icons/Wishlist001.png')} />
                         </View>
                     )
-                }}
+                })}
 
             />
             <Stack.Screen name='BottomNav' component={BottomNav} 
@@ -65,6 +68,7 @@ function MainStack() {
                     headerShown:false,
                 }}
            />
+
            <Stack.Screen 
                 name='ManagePassword' 
                 component={ManagePassword}
@@ -124,7 +128,8 @@ function MainStack() {
                     title:'Add Course',
                 }}
             />
-           {/*<Stack.Screen name='FilterCategory' component={FilterCategory} options={{
+           <Stack.Screen name='FilterCategory' component={FilterCategory} options={{
+           
                title:'Filter Category',
                
            }}/>
@@ -165,38 +170,17 @@ function MainStack() {
            <Stack.Screen name='BooksDetails' component={BooksDetails}  options={({route})=>({
                headerRight:()=>(
                     <TouchableOpacity style={{borderRadius:30,marginRight:30, elevation:10, backgroundColor:'#fff'}}>
-                        <Image source={require('../assets/icons/wishlist.png')} style={{height:30,width:30, margin:5}}/>
+                        <Image source={require('../assets/icons/Wishlist2.png')} style={{height:25,width:25, margin:5}}/>
                     </TouchableOpacity>
                 ),
-                headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/> */}
-           {/* <Stack.Screen name='Books' component={Books} /> */}
-           {/* <Stack.Screen name="Wishlist" component={Wishlist}/> */}
+                headerTitle:()=>(<RText style={{fontFamily:'Roboto-Bold',fontSize:24}}>{route.params.headerTitle}</RText>)})}/>
+           <Stack.Screen name='MyLibrary' component={PersonalBooks} />
+           <Stack.Screen name="Wishlist" component={Wishlist}/>
+           <Stack.Screen name="MyCourses"  component={MyCourses} options={{
+               headerTitleStyle:{color:'#950740'}
+           }}/>
 
-           {/* <Stack.Screen 
-                name='Profile'
-                component={Profile}
-                options={{
-                    title: 'Profile',
-                    headerRight: () => (
-                        <View style={{alignItems: 'center',marginRight:10, flexDirection: 'row'}}>
-                            <View style={{paddingRight: 5}}>
-                                <RText style={{fontFamily:'Roboto-Medium'}}>Instructor Mode</RText>
-                            </View>
-                            <View>
-                            <Switch 
-                                trackColor={{ false: "#B2B2B2", true: "#B2B2B2" }}
-                                thumbColor={isEnabled ? "#ffffff" : "#1A1A1D"}
-                                ios_backgroundColor="#3e3e3e"
-                                onValueChange={toggleSwitch}
-                                value={isEnabled}
-                            />
-                            </View>
-                        </View>
-                        
-                    )
-                }}
-            /> */}
-
+           
             <Stack.Screen 
                 name="PersonalSetting"
                 component={PersonalSetting}
@@ -206,6 +190,12 @@ function MainStack() {
                 }}
             />
 
+           <Stack.Screen name='Notification' component={NotificationPage} 
+           options={{
+               title: "Notification", 
+               headerTitleStyle: {color: '#950740'}
+           }}
+           />
        </Stack.Navigator>
     )
 }

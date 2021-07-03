@@ -7,14 +7,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { PushRoute } from '../store/RouterSlice'
 import { BooksStore, CoursesStore } from '../store/SwapStoreSlice'
 import { useRoute } from '@react-navigation/native'
+import { ClearToken } from '../store/AuthSlice'
+import { baseUrl } from '../utils/config'
 
 
 
 function DrawerContainer(props) {
     
-    const swapStore = useSelector(state => state.swapStore)
+    const {swapStore, auth} = useSelector(state => state)
     const dispatch = useDispatch()
     // console.log(RouterController)
+
     const DrawerOptionList = [
         {
          name: 'Courses',
@@ -42,7 +45,7 @@ function DrawerContainer(props) {
          style: {width: 19, height:22},
          route: 'MyCourse',
          onPress: ()=> {
-            props.navigation.navigate('MyCourse')
+            props.navigation.navigate('MyCourses')
          }
         },
         {
@@ -87,19 +90,19 @@ function DrawerContainer(props) {
                     </View>
                     <View style={{alignSelf:'center', justifyContent:'center',marginVertical:8, marginTop:16
                 }}>
-                        <Avatar.Image size={74} style={{marginLeft: 16, elevation:15}} source={require('../assets/images/userSample.jpeg')}/>
+                        <Avatar.Image size={74} style={{marginLeft: 0, elevation:15}} source={auth.user.profile==null?require('../assets/images/userSample.jpeg'):{uri: baseUrl+'file/img/user/'+auth.user.profile }}/>
                        <View style={{marginVertical: 10}}>
                             <RText style={{fontFamily:'Roboto', textAlign:'center'}}>Hello!</RText>
-                            <RText style={{fontFamily:'Roboto-Bold',fontSize: 18}}>Gourav Singh</RText>
+                            <RText style={{fontFamily:'Roboto-Bold',fontSize: 18, textAlign:'center'}}>{auth.user.name}</RText>
                        </View>
                     </View>
                     <View style={{margin:8, flexDirection:'row', justifyContent:'space-between'}}>
                         <View style={{alignItems:'center'}}>
-                            <RText style={{fontFamily:'Roboto-Medium', fontSize:12}}>10</RText>
+                            <RText style={{fontFamily:'Roboto-Medium', fontSize:12}}>{auth.user.enrollments.ongoing}</RText>
                             <RText style={{fontFamily:'Roboto-Light', fontSize:12, color:'#717171'}}>Ongoing</RText>
                         </View>
                         <View style={{alignItems:'center'}}>
-                            <RText style={{fontFamily:'Roboto-Medium', fontSize:12}}>10</RText>
+                            <RText style={{fontFamily:'Roboto-Medium', fontSize:12}}>{auth.user.enrollments.completed}</RText>
                             <RText style={{fontFamily:'Roboto-Light', fontSize:12, color:'#717171'}}>Completed</RText>
                         </View>
                     </View>
@@ -120,10 +123,10 @@ function DrawerContainer(props) {
 
             </DrawerContentScrollView>
             <View style={{height:1, backgroundColor:'#B2B2B2'}}></View>
-            <View style={styles.bottom}>
+            <TouchableOpacity onPress={()=>dispatch(ClearToken())}  style={styles.bottom}>
                 <View style={{width:25, marginHorizontal:32}}><Image source={require('../assets/icons/LogOut.png')} style={{width:16, height:16}} /></View>
                 <RText style={{fontFamily:'Roboto-Medium'}}>Logout</RText>
-            </View>
+            </TouchableOpacity>
         </SafeAreaView>
     )
 }

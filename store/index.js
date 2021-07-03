@@ -10,6 +10,7 @@ const store = configureStore({
     reducer:{
         auth: AuthSlice,
         swapStore: SwapStoreSlice,
+        // user: UserSlice
         // routerController: RouterSlice
         user: UserSlice
     }

@@ -89,7 +89,7 @@ export function BooksHomeStack() {
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     return (
-        <Stack.Navigator initialRouteName='Profile'>
+        <Stack.Navigator initialRouteName='Books'>
             <Stack.Screen 
                 name='Books'
                 component={Books}

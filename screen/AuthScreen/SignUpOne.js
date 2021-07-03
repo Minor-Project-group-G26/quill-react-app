@@ -31,7 +31,7 @@ function SignUpOne({navigation, route}) {
         // textInput_Style:{},
         textInput_Placeholder:"Type Name...",
         placeholder_Color:'#ededed',
-        onChangeText: (e="")=>setUser({...User, name:e.trim()}),
+        onChangeText: (e="")=>setUser({...User, name:e}),
         value:User.name
 
     },{
@@ -61,7 +61,7 @@ function SignUpOne({navigation, route}) {
                     <RText style={{ fontSize: 20, fontFamily: 'Roboto-Medium', color: '#fff', marginVertical: 16 }}> </RText>
                 </View>
                 <View style={{ marginTop: 16 }}>
-                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo',{data:User})} />
+                    <ArrowButton onPress={() => navigation.navigate('SignUpTwo',{data:{name:User.name.trim(), date_of_birth: User.date_of_birth}})} />
                 </View>
             </View>
 

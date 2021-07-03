@@ -8,22 +8,21 @@ import DrawerNav from './DrawerNav'
 
 function NavContoller() {
 
-    const {token, isSaved} = useSelector(state => state.auth);
+    const {token, isSaved, user} = useSelector(state => state.auth);
     // const token = null;
     const dispatch = useDispatch()
     console.log(token)
     useEffect(() => {
-        
-        dispatch(CheckToken())
-        
-    }, [isSaved, token])
+        dispatch(CheckToken())      
+    }, [token])
     return (<>
 
-            {/* {token === null || false
+            {token === null
             ?(
                 <AuthStack />                
-            ):( */}
+            ):(
                 <DrawerNav /> 
+            )}
         </>
     )
 

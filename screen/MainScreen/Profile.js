@@ -3,19 +3,23 @@ import { Text, View, StyleSheet, Image, TouchableOpacity, Dimensions, ScrollView
 import RootComponent from '../RootComponent';
 import RText from '../../components/common/RText';
 import AText from '../../components/common/AText';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { baseUrl } from '../../utils/config';
+import { ClearToken } from '../../store/AuthSlice';
 
 
 function Profile({navigation}) {
 
     const [Invisible, setInvisible] = useState(-1)
-    const user = useSelector(state => state.user)
+    const {user, auth} = useSelector(state => state)
+    const UserDetail = auth.user
     const [ThemeColor, setThemeColor] = useState({
         backgroundColor:'#C3073F',
         textColor: '#000',
         crateColor:'#4E4E50',
         lol:'Hi'
     })
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if(user.instructorMode){
@@ -42,7 +46,7 @@ function Profile({navigation}) {
     const options = [
         {
             name:"Personal Setting",
-            onPress: () => navigation.navigate('PersonalSetting')
+            onPress: () => navigation.navigate('PersonalSetting', {user: UserDetail})
         },
         {
             name:"Manage Password",
@@ -82,13 +86,9 @@ function Profile({navigation}) {
         },
         {
             name:"Log out",
-            onPress: () => navigation.navigate('AdminVerifyInstructor')
+            onPress:()=>dispatch(ClearToken())
         },
     ]
-
-    ShowAlertWithDelay=()=>{
-        
-    }
 
     const [swapColor, setswapColor] = useState(-1)
 
@@ -98,6 +98,10 @@ function Profile({navigation}) {
         setTimeout(function(){
             setInvisible(-1) 
         }, 2000);
+    }
+
+    const ShowAlertWithDelay = ()=>{
+
     }
 
 
@@ -119,10 +123,10 @@ function Profile({navigation}) {
             <ScrollView>
                 <View style={style.header}>
                     <View style={style.headerLeft}>
-                        <Image style={style.Avatar} source={require('../../assets/icons/instructor_img.png')} />
+                        <Image style={style.Avatar} source={UserDetail.profile==null?require('../../assets/images/userSample.jpeg'):{uri: baseUrl+'file/img/user/'+auth.user.profile }} />
                     </View>
                     <View style={style.headerRight}>
-                        <AText style={{...style.headerText, color:ThemeColor.textColor}}>{ThemeColor.lol}, John Doe</AText>
+                        <AText style={{...style.headerText, color:ThemeColor.textColor}}>{ThemeColor.lol}, {UserDetail.name}</AText>
                     </View>
                 </View>
                 <View style={style.line}></View>
@@ -143,7 +147,8 @@ const style = StyleSheet.create({
     },
     Avatar: {
         width: 65,
-        height: 65
+        height: 65,
+        borderRadius: 65/2
     },
     header: {
         // backgroundColor: '#fff',
